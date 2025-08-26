@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>छात्र प्रबंधन - बी एस इंटर कॉलेज</title>
+  <link rel="stylesheet" href="admin-style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <h1>छात्र प्रबंधन</h1>
+  </header>
+  <main class="main-content">
+    <div class="card">
+      <h2><i class="fas fa-user-plus"></i> नया छात्र जोड़ें</h2>
+      <form>
+        <label>नाम: <input type="text" placeholder="छात्र का नाम"></label>
+        <label>कक्षा: <input type="text" placeholder="कक्षा"></label>
+        <label>रोल नंबर: <input type="text" placeholder="रोल नंबर"></label>
+        <button type="submit" class="quick-btn">जोड़ें</button>
+      </form>
+    </div>
+    <div class="card">
+      <h2><i class="fas fa-list"></i> छात्र सूची</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>नाम</th>
+            <th>कक्षा</th>
+            <th>रोल नंबर</th>
+            <th>कार्रवाई</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>अर्जुन यादव</td>
+            <td>12वीं</td>
+            <td>1023</td>
+            <td><button class="quick-btn">हटाएं</button></td>
+          </tr>
+          <tr>
+            <td>सीमा शर्मा</td>
+            <td>11वीं</td>
+            <td>1024</td>
+            <td><button class="quick-btn">हटाएं</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</body>
+</html>

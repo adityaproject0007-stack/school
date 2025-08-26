@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <title>फीस भुगतान - सरस्वती विद्या मंदिर</title>
+  <style>
+    body { font-family: 'Segoe UI'; background: #f2f2f2; padding: 40px; }
+    .fee-box {
+      background: white; max-width: 500px; margin: auto; padding: 30px;
+      border-radius: 10px; box-shadow: 0 0 10px #aaa;
+    }
+    h2 { text-align: center; color: #004080; }
+    input, select, button {
+      width: 100%; padding: 10px; margin: 10px 0;
+      border-radius: 5px; border: 1px solid #ccc;
+    }
+    button {
+      background-color: #004080; color: white; font-weight: bold;
+      border: none; cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="fee-box">
+    <h2>🎓 फीस भुगतान</h2>
+    <form action="/payment-success.html" method="post">
+      <label>छात्र का नाम:</label>
+      <input type="text" name="student_name" required>
+
+      <label>कक्षा चुनें:</label>
+      <select name="class" required>
+        <option value="">--कक्षा चुनें--</option>
+        <option>कक्षा 1</option>
+        <option>कक्षा 2</option>
+        <option>कक्षा 3</option>
+        <option>कक्षा 4</option>
+        <option>कक्षा 5</option>
+        <option>कक्षा 6</option>
+        <option>कक्षा 7</option>
+        <option>कक्षा 8</option>
+        <option>कक्षा 9</option>
+        <option>कक्षा 10</option>
+        <option>कक्षा 11</option>
+        <option>कक्षा 12</option>
+      </select>
+
+      <label>राशि (₹):</label>
+      <input type="number" name="amount" required>
+
+      <label>UPI ID / Phone Number:</label>
+      <input type="text" name="payment_details" required>
+
+      <button type="submit">भुगतान करें</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>रिजल्ट अपलोड करें - बी एस इंटर कॉलेज</title>
+  <link rel="stylesheet" href="admin-style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <h1>रिजल्ट अपलोड करें</h1>
+  </header>
+  <main class="main-content">
+    <div class="card">
+      <h2><i class="fas fa-upload"></i> परीक्षा परिणाम अपलोड करें</h2>
+      <form>
+        <label>कक्षा:
+          <select>
+            <option value="">कक्षा चुनें</option>
+            <option value="10">10वीं</option>
+            <option value="11">11वीं</option>
+            <option value="12">12वीं</option>
+          </select>
+        </label>
+        <label>विषय: <input type="text" placeholder="विषय का नाम"></label>
+        <label>PDF अपलोड करें: <input type="file" accept="application/pdf"></label>
+        <button type="submit" class="quick-btn">अपलोड करें</button>
+      </form>
+    </div>
+    <div class="card">
+      <h2><i class="fas fa-history"></i> हाल के अपलोड</h2>
+      <ul class="activity-log">
+        <li>📌 8 जून 2025 - 12वीं कक्षा के गणित का परिणाम</li>
+        <li>📌 7 जून 2025 - 11वीं कक्षा के भौतिकी का परिणाम</li>
+      </ul>
+    </div>
+  </main>
+</body>
+</html>

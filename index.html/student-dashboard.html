@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Dashboard - बी एस इंटर कॉलेज</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+    }
+    .topbar {
+      background: #004080;
+      padding: 20px;
+      color: white;
+      text-align: center;
+      font-size: 24px;
+    }
+    .container {
+      display: flex;
+      min-height: calc(100vh - 70px);
+    }
+    .sidebar {
+      width: 220px;
+      background: #003060;
+      color: white;
+      padding: 20px;
+    }
+    .sidebar a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin: 15px 0;
+      font-size: 16px;
+    }
+    .sidebar a:hover {
+      color: #ffcc99;
+    }
+    .main {
+      flex: 1;
+      padding: 30px;
+    }
+    .welcome {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .welcome h3 {
+      margin: 0;
+      color: #004080;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      text-align: center;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .card i {
+      font-size: 28px;
+      color: #004080;
+      margin-bottom: 10px;
+    }
+    .card p {
+      margin: 0;
+      font-size: 18px;
+      color: #ff8800;
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">छात्र डैशबोर्ड</div>
+  <div class="container">
+    <nav class="sidebar">
+      <a href="#"><i class="fas fa-user-circle"></i> प्रोफ़ाइल</a>
+      <a href="#"><i class="fas fa-money-bill-wave"></i> फीस भुगतान</a>
+      <a href="#"><i class="fas fa-history"></i> रिज़ल्ट इतिहास</a>
+      <a href="#"><i class="fas fa-calendar-check"></i> उपस्थिति</a>
+      <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </nav>
+    <main class="main">
+      <div class="welcome">
+        <h3>स्वागत है, [Student Name]</h3>
+        <p>अपना प्रोफ़ाइल, फीस और परिणाम यहाँ देखें।</p>
+      </div>
+      <div class="cards">
+        <div class="card"><i class="fas fa-user"></i><p>Profile</p></div>
+        <div class="card"><i class="fas fa-money-bill-wave"></i><p>Pay Fees</p></div>
+        <div class="card"><i class="fas fa-history"></i><p>Result History</p></div>
+        <div class="card"><i class="fas fa-calendar-check"></i><p>Attendance</p></div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
