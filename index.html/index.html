@@ -1,497 +1,1646 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-   </style>
-</head>
-</html><head><link rel="stylesheet" href="css/main-style.css">
-  <link rel="stylesheet" href="dashboard-style.css">
+  <meta charset="UTF-8" />
+  <title>बी एस इंटर कॉलेज | B.S. Inter College</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="बी एस इंटर कॉलेज - आधुनिक शिक्षा, अनुशासन और संस्कारों से भरपूर श्रेष्ठ विद्यालय।" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Hind:wght@400;600;700&display=swap" rel="stylesheet" />
 
-</head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>बी एस इंटर कॉलेज</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #f97316;
+      --bg: #f4f6fb;
+      --card-bg: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.12);
+      --radius-xl: 22px;
+      --radius-lg: 18px;
+      --radius-pill: 999px;
+    }
+
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     body {
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(to right, #e0eafc, #cfdef3); /* gradient background */
-      color: #333;
+      font-family: "Poppins", "Hind", system-ui, sans-serif;
+      background: radial-gradient(circle at top left, #dbeafe 0, #eef2ff 28%, #f9fafb 60%, #eef2ff 100%);
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
-    /* Header/Navbar Styling */
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, var(--primary), var(--secondary));
+      border-radius: 999px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1180px, 94vw);
+      margin: 0 auto;
+    }
+
+    /* NAVBAR */
     .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(120deg, rgba(15, 23, 42, 0.84), rgba(15, 23, 42, 0.70));
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.4);
+    }
+
+    .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background-color: #003366; /* deep blue */
-      padding: 15px 30px;
-      color: white;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      padding: 10px 0;
+      gap: 14px;
     }
 
-    .navbar .logo {
+    .brand {
       display: flex;
       align-items: center;
+      gap: 10px;
+      color: #e5edff;
     }
 
-    .navbar .logo img {
-      height: 60px;
-      margin-right: 15px;
-    }
-
-    .navbar .school-name {
-      font-size: 24px;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
-
-    .navbar nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 25px;
-      font-weight: 500;
-      font-size: 16px;
-      transition: 0.3s;
-    }
-
-    .navbar nav a:hover {
-      color: #ffcc00; /* highlight color */
-    }
-
-    .navbar .login-links a {
-      margin-left: 20px;
-      background: #ffcc00;
-      color: #003366;
-      padding: 8px 15px;
-      border-radius: 5px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .navbar .login-links a:hover {
-      background-color: #fff;
-      color: #003366;
-    }
-
-    /* Hero Section */
-    .hero {
-      background: url('school-banner.jpg') no-repeat center center/cover;
-      height: 450px;
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #fef3c7, #f97316 50%, #1d4ed8 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      color: #fff;
-      position: relative;
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+      box-shadow: 0 12px 25px rgba(15, 23, 42, 0.4);
     }
 
-    .hero::before {
+    .brand-text-main {
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: 0.03em;
+    }
+
+    .brand-text-sub {
+      font-size: 11px;
+      opacity: 0.8;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+      color: #e5e7eb;
+      align-items: center;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 6px 4px;
+      opacity: 0.85;
+    }
+
+    .nav-links a::after {
       content: "";
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.5);
+      left: 0;
+      bottom: 0;
+      width: 0%;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #f97316, #fbbf24);
+      transition: width 0.26s ease;
     }
 
-    .hero h1 {
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      border-radius: var(--radius-pill);
+      padding: 8px 18px;
+      border: none;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(120deg, var(--primary), var(--secondary));
+      color: #f9fafb;
+      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.5);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) scale(1.01);
+      box-shadow: 0 16px 38px rgba(37, 99, 235, 0.66);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: #e5e7eb;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .nav-toggle {
+      display: none;
+      font-size: 20px;
+      color: #e5e7eb;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 32px 0 40px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 30px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      background: rgba(37, 99, 235, 0.08);
+      color: #1e40af;
+      font-size: 12px;
+      margin-bottom: 10px;
+      border: 1px solid rgba(129, 140, 248, 0.4);
+      backdrop-filter: blur(4px);
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #facc15, #fb923c);
+      box-shadow: 0 0 0 6px rgba(251, 191, 36, 0.25);
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 4vw, 34px);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(120deg, #2563eb, #f97316);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+      margin-bottom: 12px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 12px;
+      color: #4b5563;
+      margin-top: 8px;
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(203, 213, 225, 0.8);
+    }
+
+    .hero-meta-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+    }
+
+    /* HERO CARD */
+    .hero-card {
+      background: radial-gradient(circle at top left, #eff6ff 0, #ffffff 35%, #e0f2fe 100%);
+      border-radius: 26px;
+      padding: 16px 16px 18px;
+      box-shadow: var(--shadow-soft);
       position: relative;
-      font-size: 42px;
-      background: rgba(255, 255, 255, 0.8);
-      color: #003366;
-      padding: 20px 30px;
-      border-radius: 10px;
-      font-weight: bold;
+      overflow: hidden;
     }
 
-    @media (max-width: 768px) {
-      .navbar nav a {
-        margin-left: 10px;
-        font-size: 14px;
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+
+    .hero-pill {
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.78);
+      color: #e5e7eb;
+      font-size: 11px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-stat-chip {
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      background: rgba(37, 99, 235, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      color: #1d4ed8;
+    }
+
+    .hero-card-body {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .hero-tagline {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #0f172a;
+    }
+
+    .hero-mini {
+      font-size: 12px;
+      color: #6b7280;
+      margin-bottom: 12px;
+    }
+
+    .hero-highlights {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      font-size: 11px;
+    }
+
+    .hero-highlight-box {
+      padding: 8px 9px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+    }
+
+    .hero-highlight-title {
+      font-weight: 600;
+      margin-bottom: 2px;
+      font-size: 11px;
+    }
+
+    .hero-highlight-sub {
+      font-size: 11px;
+      color: #64748b;
+    }
+
+    .hero-graphic {
+      position: relative;
+      height: 160px;
+      border-radius: 18px;
+      background: radial-gradient(circle at 30% 20%, #bfdbfe, #2563eb 40%, #1f2937 100%);
+      overflow: hidden;
+      padding: 10px;
+      color: #e5edff;
+    }
+
+    .hero-graphic-badge {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.75);
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .hero-graphic-main {
+      position: absolute;
+      bottom: 14px;
+      left: 12px;
+      right: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .hero-graphic-title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .hero-graphic-sub {
+      font-size: 11px;
+      opacity: 0.86;
+    }
+
+    .hero-graphic-side {
+      text-align: right;
+      font-size: 11px;
+      opacity: 0.9;
+    }
+
+    .hero-graphic-pill {
+      margin-top: 4px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.86);
+      font-size: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .hero-blob {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, rgba(248, 250, 252, 0.9), rgba(219, 234, 254, 0.1));
+      top: -32px;
+      right: -20px;
+      filter: blur(1px);
+      opacity: 0.75;
+    }
+
+    /* SECTION BASE */
+    section {
+      padding: 26px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .section-kicker {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #6b7280;
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: var(--radius-lg);
+      padding: 14px 14px 13px;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+      border-color: rgba(129, 140, 248, 0.8);
+    }
+
+    .card-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+      font-size: 18px;
+      background: radial-gradient(circle at 30% 20%, #bfdbfe, #1d4ed8);
+      color: white;
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4);
+    }
+
+    .card-title {
+      font-weight: 600;
+      margin-bottom: 3px;
+      font-size: 13px;
+    }
+
+    .card-sub {
+      font-size: 11px;
+      color: #6b7280;
+    }
+
+    /* NOTICE / TIMETABLE */
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .notice-board {
+      background: rgba(15, 23, 42, 0.96);
+      color: #e5e7eb;
+      border-radius: var(--radius-lg);
+      padding: 14px 14px 11px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .notice-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+
+    .notice-tag {
+      padding: 4px 9px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      font-size: 11px;
+    }
+
+    .notice-list {
+      list-style: none;
+      font-size: 12px;
+      display: grid;
+      gap: 7px;
+      margin-top: 4px;
+    }
+
+    .notice-list li {
+      padding: 6px 8px;
+      border-radius: 10px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .notice-date {
+      font-size: 10px;
+      color: #9ca3af;
+      min-width: 70px;
+    }
+
+    .notice-text {
+      font-size: 12px;
+    }
+
+    .notice-pill {
+      position: absolute;
+      right: 14px;
+      bottom: 10px;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.9);
+      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.7);
+    }
+
+    .timetable {
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(226, 232, 240, 0.96);
+      padding: 12px 12px 10px;
+      font-size: 12px;
+    }
+
+    .timetable h3 {
+      font-size: 13px;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .time-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 4px 0;
+      border-bottom: 1px dashed rgba(209, 213, 219, 0.9);
+    }
+
+    .time-row:last-child {
+      border-bottom: none;
+    }
+
+    .time-label {
+      font-weight: 500;
+    }
+
+    .time-desc {
+      color: #6b7280;
+      font-size: 11px;
+    }
+
+    /* ACHIEVEMENTS */
+    .chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .chip {
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(37, 99, 235, 0.06);
+      border: 1px solid rgba(191, 219, 254, 0.9);
+      font-size: 11px;
+      color: #1d4ed8;
+    }
+
+    .topper-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .topper-card {
+      background: #0f172a;
+      color: #e5e7eb;
+      border-radius: 18px;
+      padding: 10px 10px 9px;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .topper-badge {
+      position: absolute;
+      top: 8px;
+      right: 9px;
+      font-size: 10px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.18);
+      border: 1px solid rgba(34, 197, 94, 0.7);
+      color: #bbf7d0;
+    }
+
+    .topper-name {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .topper-class {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-bottom: 4px;
+    }
+
+    .topper-score {
+      font-size: 12px;
+      font-weight: 500;
+      color: #fbbf24;
+    }
+
+    /* PRINCIPAL / ADMISSION */
+    .principal-card {
+      background: linear-gradient(135deg, #0f172a, #1f2937);
+      color: #e5e7eb;
+      border-radius: var(--radius-xl);
+      padding: 16px 16px 14px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .principal-tag {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .principal-text {
+      font-size: 12px;
+      color: #d1d5db;
+      margin-bottom: 10px;
+    }
+
+    .principal-name {
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .admission-card {
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: var(--radius-xl);
+      padding: 16px 16px 14px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(229, 231, 235, 0.98);
+    }
+
+    .admission-steps {
+      list-style: none;
+      font-size: 12px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .admission-steps li {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.08);
+      border: 1px solid rgba(37, 99, 235, 0.7);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #1d4ed8;
+      margin-top: 2px;
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .contact-card {
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: var(--radius-xl);
+      padding: 14px 14px 12px;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(226, 232, 240, 0.96);
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .field-label {
+      font-size: 11px;
+      margin-bottom: 2px;
+      color: #374151;
+    }
+
+    .input,
+    .textarea {
+      width: 100%;
+      border-radius: 11px;
+      border: 1px solid rgba(209, 213, 219, 0.96);
+      padding: 7px 9px;
+      font-size: 12px;
+      outline: none;
+      transition: border-color 0.16s ease, box-shadow 0.16s ease;
+      background: rgba(249, 250, 251, 0.96);
+    }
+
+    .input:focus,
+    .textarea:focus {
+      border-color: rgba(37, 99, 235, 0.8);
+      box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.35);
+      background: #ffffff;
+    }
+
+    .textarea {
+      resize: vertical;
+      min-height: 70px;
+    }
+
+    .contact-details {
+      font-size: 12px;
+      background: #0f172a;
+      color: #e5e7eb;
+      border-radius: var(--radius-xl);
+      padding: 14px 14px 12px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    .detail-row {
+      margin-bottom: 6px;
+    }
+
+    .detail-label {
+      font-size: 11px;
+      color: #9ca3af;
+    }
+
+    .detail-value {
+      font-size: 12px;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 24px;
+      padding: 12px 0 18px;
+      border-top: 1px solid rgba(203, 213, 225, 0.9);
+      background: rgba(15, 23, 42, 0.96);
+      color: #9ca3af;
+      font-size: 11px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer-right {
+      font-size: 11px;
+    }
+
+    /* LOGIN MODAL */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 60;
+      padding: 16px;
+    }
+
+    .modal {
+      background: #0f172a;
+      color: #e5e7eb;
+      border-radius: 22px;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.9);
+      width: min(380px, 100%);
+      padding: 16px 16px 14px;
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .modal::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 20% 10%, rgba(59, 130, 246, 0.35), transparent);
+      top: -80px;
+      right: -40px;
+      opacity: 0.9;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .modal-title {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .modal-subtitle {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .modal-close {
+      background: transparent;
+      border: none;
+      color: #9ca3af;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .login-tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .login-tab {
+      flex: 1;
+      text-align: center;
+      font-size: 12px;
+      padding: 6px 0;
+      border-radius: 999px;
+      cursor: pointer;
+      border: 1px solid rgba(75, 85, 99, 0.8);
+      background: rgba(15, 23, 42, 0.8);
+      color: #9ca3af;
+      transition: all 0.18s ease;
+    }
+
+    .login-tab.active {
+      background: linear-gradient(120deg, #2563eb, #f97316);
+      border-color: transparent;
+      color: #f9fafb;
+      box-shadow: 0 10px 24px rgba(37, 99, 235, 0.7);
+    }
+
+    .modal-form {
+      display: grid;
+      gap: 8px;
+      position: relative;
+      z-index: 1;
+      font-size: 12px;
+    }
+
+    .modal .input {
+      background: rgba(15, 23, 42, 0.9);
+      border-color: rgba(75, 85, 99, 0.9);
+      color: #e5e7eb;
+    }
+
+    .modal .input:focus {
+      border-color: rgba(59, 130, 246, 0.9);
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.8);
+      background: rgba(15, 23, 42, 1);
+    }
+
+    .modal-footer {
+      margin-top: 6px;
+      font-size: 10px;
+      color: #9ca3af;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 880px) {
+      .hero-grid,
+      .two-col,
+      .contact-grid {
+        grid-template-columns: 1fr;
       }
 
-      .hero h1 {
-        font-size: 28px;
-        padding: 15px 20px;
+      .hero-card-body {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-graphic {
+        height: 150px;
+      }
+
+      .card-grid,
+      .topper-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-inner {
+        padding-inline: 4px;
+      }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 54px;
+        left: 0;
+        right: 0;
+        background: rgba(15, 23, 42, 0.98);
+        padding: 10px 18px 10px;
+        flex-direction: column;
+        gap: 8px;
+        border-bottom: 1px solid rgba(55, 65, 81, 0.9);
+      }
+      .nav-links.open {
+        display: flex;
+      }
+      .nav-toggle {
+        display: block;
+      }
+      .nav-actions {
+        gap: 6px;
+      }
+      .hero {
+        padding-top: 22px;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .card-grid,
+      .topper-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-card {
+        padding: 13px;
+      }
+      .brand-text-sub {
+        display: none;
+      }
+      .btn {
+        padding-inline: 14px;
+      }
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
 </head>
 <body>
+  <!-- LOGIN MODAL -->
+  <div class="modal-backdrop" id="loginModal">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <div class="modal-title">Secure Login</div>
+        </div>
+        <button class="modal-close" onclick="closeLoginModal()">&times;</button>
+      </div>
+      <div class="modal-subtitle">कृपया अपनी भूमिका चुनें और सुरक्षित लॉगिन करें।</div>
 
-  <!-- HEADER START -->
-  <header class="navbar">
-    <div class="logo">
-      <img src="logo.png" alt="School Logo">
-      <div class="school-name">बी एस इंटर कॉलेज</div>
+      <div class="login-tabs">
+        <button class="login-tab active" data-role="student" onclick="selectRole('student')">
+          👨‍🎓 छात्र लॉगिन
+        </button>
+        <button class="login-tab" data-role="admin" onclick="selectRole('admin')">
+          🛡️ एडमिन लॉगिन
+        </button>
+      </div>
+
+      <form class="modal-form" onsubmit="handleLogin(event)">
+        <div>
+          <div class="field-label">यूज़रनेम / मोबाइल</div>
+          <input class="input" type="text" id="loginUsername" required />
+        </div>
+        <div>
+          <div class="field-label">पासवर्ड</div>
+          <input class="input" type="password" id="loginPassword" required />
+        </div>
+        <div>
+          <div class="field-label">शैक्षणिक सत्र</div>
+          <select class="input" id="loginSession">
+            <option value="2025-26">2025-26</option>
+            <option value="2024-25">2024-25</option>
+            <option value="2023-24">2023-24</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" type="submit">
+          लॉगिन करें
+        </button>
+      </form>
+      <div class="modal-footer">
+        * यह केवल डेमो लॉगिन UI है। असली डैशबोर्ड के लिए बाद में PHP/MySQL से कनेक्ट कर सकते हैं।
+      </div>
     </div>
-    <nav>
-      <a href="#home">होम</a>
-      <a href="#about">हमारे बारे में</a>
-      <a href="#facilities">सुविधाएँ</a>
-      <a href="#infrastructure">संरचना</a>
-      <a href="#admission">प्रवेश</a>
-      <a href="#contact">संपर्क</a>
-    </nav>
-    <div class="login-links">
-      <a href="admin-login.html">Admin Login</a>
-      <a href="student-login.html">Student Login</a>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="brand-logo">BS</div>
+        <div>
+          <div class="brand-text-main">बी एस इंटर कॉलेज</div>
+          <div class="brand-text-sub">Narayanpur Teju, Moradabad (U.P.)</div>
+        </div>
+      </div>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home">होम</a>
+        <a href="#about">हमारे बारे में</a>
+        <a href="#facilities">सुविधाएँ</a>
+        <a href="#notices">सूचनाएँ</a>
+        <a href="#results">उपलब्धियाँ</a>
+        <a href="#admission">प्रवेश</a>
+        <a href="#contact">संपर्क</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="btn btn-ghost" onclick="openLoginModal()">Login</button>
+        <button class="btn btn-primary" onclick="scrollToSection('admission')">
+          Online Admission
+        </button>
+        <div class="nav-toggle" onclick="toggleNav()">☰</div>
+      </div>
     </div>
-  </header>
-  <!-- HEADER END -->
-
-  <!-- HERO SECTION START -->
-  <section class="hero" id="home">
-    <h1>शिक्षा ही सेवा है – Welcome to B.S. Inter College</h1>
-  </section>
-  <!-- HERO SECTION END -->
-
-</body>
-</html>
-
-
   </nav>
 
- <!-- About Us Section -->
-<section id="about" class="section">
-  <div class="container">
-    <h2 class="section-title">हमारे बारे में | About Us</h2>
-    <div class="about-content">
-      <div class="about-text">
-        <p>
-          <strong>बी एस इंटर कॉलेज</strong> की स्थापना गुणवत्ता युक्त शिक्षा के उद्देश्य से की गई थी।
-          हमारा उद्देश्य छात्रों के शैक्षणिक, मानसिक, और नैतिक विकास को सुनिश्चित करना है।
+  <!-- HERO -->
+  <main id="home" class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="badge">
+          <span class="badge-dot"></span>
+          शिक्षा ही सेवा है • CBSE Pattern • Discipline + डिजिटल लर्निंग
+        </div>
+        <h1 class="hero-title">
+          आधुनिक सुविधाओं के साथ
+          <span class="gradient-text">समग्र शिक्षा</span> का श्रेष्ठ केंद्र।
+        </h1>
+        <p class="hero-subtitle">
+          बी एस इंटर कॉलेज में हम छात्रों के <b>अकादमिक, नैतिक और व्यक्तित्व विकास</b> पर एक साथ कार्य करते हैं।  
+          स्मार्ट क्लासरूम, अनुभवी शिक्षक और सुरक्षित वातावरण – सब कुछ एक ही कैंपस में।
         </p>
-        <p>
-          <strong>BS Inter College</strong> is committed to nurturing young minds by providing holistic and modern education.
-          With experienced faculty, digital classrooms, and a discipline-rich environment, we aim to build confident and responsible citizens.
-        </p>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="scrollToSection('admission')">📄 Admit Your Child</button>
+          <button class="btn btn-ghost" onclick="scrollToSection('notices')">📌 Latest Notices</button>
+        </div>
+
+        <div class="hero-meta">
+          <span><span class="hero-meta-dot"></span> 100% बोर्ड रिज़ल्ट (पिछले 3 वर्ष)</span>
+          <span>🏆 State Level Sports & Olympiad Winners</span>
+          <span>🚌 Transport • 💻 Computer Lab • 🔬 Science Lab</span>
+        </div>
       </div>
-      <div class="about-image">
-        <img src="about-school.jpg" alt="About Our School">
+
+      <div class="hero-card">
+        <div class="hero-card-header">
+          <div class="hero-pill">
+            🎓 Admission Open
+            <span style="opacity:0.8;">Session 2025–26</span>
+          </div>
+          <div class="hero-stat-chip">Classes 6–12 • Science & Arts</div>
+        </div>
+
+        <div class="hero-card-body">
+          <div>
+            <div class="hero-tagline">Why B.S. Inter College?</div>
+            <div class="hero-mini">
+              Hindi + English वातावरण, संस्कार युक्त शिक्षा और आधुनिक तकनीक का परफेक्ट संतुलन।
+            </div>
+            <div class="hero-highlights">
+              <div class="hero-highlight-box">
+                <div class="hero-highlight-title">Smart Classroom</div>
+                <div class="hero-highlight-sub">LED Panel, Digital Content, Live Explanation</div>
+              </div>
+              <div class="hero-highlight-box">
+                <div class="hero-highlight-title">Mentor Focus</div>
+                <div class="hero-highlight-sub">छोटे batch, individual doubt support</div>
+              </div>
+              <div class="hero-highlight-box">
+                <div class="hero-highlight-title">Result Oriented</div>
+                <div class="hero-highlight-sub">Regular टेस्ट, PTM, Progress Reports</div>
+              </div>
+              <div class="hero-highlight-box">
+                <div class="hero-highlight-title">Safe Campus</div>
+                <div class="hero-highlight-sub">CCTV, Transport & disciplined environment</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-graphic">
+            <div class="hero-blob"></div>
+            <div class="hero-graphic-badge">
+              📊 Live Performance
+              <span style="font-size:10px;opacity:.8;">Parent App Coming Soon</span>
+            </div>
+
+            <div class="hero-graphic-main">
+              <div>
+                <div class="hero-graphic-title">Board Result – 2024</div>
+                <div class="hero-graphic-sub">Class 10: 100% • Class 12: 98% Pass</div>
+              </div>
+              <div class="hero-graphic-side">
+                Avg. Score: <b>86%</b>
+                <div class="hero-graphic-pill">
+                  🔔 Topper: 96.8% • XI Science
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- hero-card -->
+    </div>
+  </main>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker">ABOUT • हमारे बारे में</div>
+        <div class="section-title">जहाँ शिक्षा और संस्कार साथ-साथ चलते हैं</div>
+        <div class="section-subtitle">
+          बी एस इंटर कॉलेज की स्थापना गुणवत्तापूर्ण, अनुशासित और मूल्य-आधारित शिक्षा के उद्देश्य से की गई है।
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="principal-card">
+          <div class="principal-tag">
+            🧑‍🏫 प्राचार्य का संदेश
+          </div>
+          <p class="principal-text">
+            प्रिय अभिभावकों, छात्रों एवं शिक्षकों,  
+            हमारा लक्ष्य सिर्फ अच्छे अंक नहीं, बल्कि <b>अच्छे इंसान</b> तैयार करना है।  
+            यहाँ हर बच्चे को <b>व्यक्तिगत मार्गदर्शन, सुरक्षित वातावरण, अनुशासन और आधुनिक शिक्षण विधि</b> दी जाती है।  
+            हम मानते हैं कि सही माहौल, अच्छे शिक्षक और निरंतर प्रयास – किसी भी छात्र का भविष्य बदल सकते हैं।
+          </p>
+          <div class="principal-name">
+            – प्राचार्य, बी एस इंटर कॉलेज
+          </div>
+        </div>
+
+        <div class="admission-card">
+          <div class="card-title" style="margin-bottom:4px;">Why Parents Trust Us?</div>
+          <ul class="admission-steps">
+            <li>
+              <span class="step-number">1</span>
+              <span>
+                <b>Experienced Faculty:</b> Board exam expert teachers, regular mentoring और doubt support।
+              </span>
+            </li>
+            <li>
+              <span class="step-number">2</span>
+              <span>
+                <b>Strong Discipline:</b> Mobile-free campus, proper uniform, daily attendance tracking।
+              </span>
+            </li>
+            <li>
+              <span class="step-number">3</span>
+              <span>
+                <b>Holistic Growth:</b> Sports, cultural programs, Olympiad, quizzes और personality grooming।
+              </span>
+            </li>
+            <li>
+              <span class="step-number">4</span>
+              <span>
+                <b>Transparent Communication:</b> Regular PTM, progress report और जल्द आने वाला Parent App।
+              </span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-
-
-  <section id=<!-- Facilities Section -->
-<section id="facilities" class="section facilities-section">
-  <div class="container">
-    <h2 class="section-title">हमारी सुविधाएँ | Our Facilities</h2>
-    <div class="facilities-grid">
-      <div class="facility-box">
-        <i class="fas fa-chalkboard-teacher"></i>
-        <h4>स्मार्ट क्लासरूम<br>Smart Classrooms</h4>
-        <p>इंटरएक्टिव लर्निंग के लिए डिजिटल सुविधाएँ।</p>
-      </div>
-      <div class="facility-box">
-        <i class="fas fa-book-reader"></i>
-        <h4>पुस्तकालय<br>Library</h4>
-        <p>हजारों पुस्तकों से युक्त एक शांत और अध्ययनशील वातावरण।</p>
-      </div>
-      <div class="facility-box">
-        <i class="fas fa-flask"></i>
-        <h4>विज्ञान प्रयोगशाला<br>Science Lab</h4>
-        <p>आधुनिक उपकरणों से सुसज्जित प्रयोगात्मक शिक्षा।</p>
-      </div>
-      <div class="facility-box">
-        <i class="fas fa-desktop"></i>
-        <h4>कंप्यूटर लैब<br>Computer Lab</h4>
-        <p>आईटी स्किल्स के लिए उन्नत कंप्यूटर सिस्टम।</p>
-      </div>
-      <div class="facility-box">
-        <i class="fas fa-futbol"></i>
-        <h4>खेल मैदान<br>Playground</h4>
-        <p>शारीरिक विकास हेतु खेलकूद की सुविधाएँ।</p>
-      </div>
-      <div class="facility-box">
-        <i class="fas fa-bus"></i>
-        <h4>बस सुविधा<br>Transport</h4>
-        <p>सुरक्षित और व्यवस्थित बस सेवाएँ।</p>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Infrastructure Section -->
-<section id="infrastructure" class="section infra-section">
-  <div class="container">
-    <h2 class="section-title">संरचना और सुविधाएँ | Infrastructure & Facilities</h2>
-    <div class="infra-grid">
-
-      <div class="infra-item">
-        <img src="smart-class.jpg" alt="Smart Classrooms">
-        <h4>स्मार्ट कक्षाएँ</h4>
-        <p>High-tech smart boards and audio-visual learning environment.</p>
-      </div>
-
-      <div class="infra-item">
-        <img src="science-lab.jpg" alt="Science Lab">
-        <h4>विज्ञान प्रयोगशाला</h4>
-        <p>Well-equipped labs for Physics, Chemistry, and Biology.</p>
-      </div>
-
-      <div class="infra-item">
-        <img src="computer-lab.jpg" alt="Computer Lab">
-        <h4>कंप्यूटर लैब</h4>
-        <p>Latest computers and internet access for all students.</p>
-      </div>
-
-      <div class="infra-item">
-        <img src="library.jpg" alt="Library">
-        <h4>पुस्तकालय</h4>
-        <p>A vast collection of academic & non-academic books.</p>
-      </div>
-
-      <div class="infra-item">
-        <img src="playground.jpg" alt="Playground">
-        <h4>खेल मैदान</h4>
-        <p>Spacious ground for sports and physical activities.</p>
-      </div>
-
-      <div class="infra-item">
-        <img src="transport.jpg" alt="School Transport">
-        <h4>परिवहन सुविधा</h4>
-        <p>Safe and comfortable school bus service.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
   </section>
 
-  <!-- News & Notices Section -->
-<section id="notices" class="section notice-section">
-  <div class="container">
-    <h2 class="section-title">समाचार एवं घोषणाएँ | News & Notices</h2>
-    
-    <div class="notice-board">
-      <ul class="notice-list">
-        <li><i class="fas fa-bullhorn"></i> <strong>12 जून 2025:</strong> 10वीं एवं 12वीं के रिजल्ट वेबसाइट पर अपलोड कर दिए गए हैं।</li>
-        <li><i class="fas fa-calendar-check"></i> <strong>15 जून 2025:</strong> ग्रीष्मकालीन अवकाश 15 जून से 30 जून तक रहेगा।</li>
-        <li><i class="fas fa-trophy"></i> <strong>20 जून 2025:</strong> वार्षिक खेलकूद प्रतियोगिता के लिए पंजीकरण शुरू।</li>
-        <li><i class="fas fa-bus"></i> <strong>25 जून 2025:</strong> परिवहन सुविधा में समय परिवर्तन किया गया है।</li>
-      </ul>
-    </div>
-  </div>
-</section>
+  <!-- FACILITIES / INFRA -->
+  <section id="facilities">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker">INFRA • सुविधाएँ</div>
+        <div class="section-title">आधुनिक सुविधाओं से सुसज्जित कैंपस</div>
+        <div class="section-subtitle">
+          डिजिटल क्लासरूम से लेकर लाइब्रेरी और स्पोर्ट्स तक – समग्र विकास के लिए पर्याप्त सुविधाएँ।
+        </div>
+      </div>
 
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-icon">💡</div>
+          <div class="card-title">Smart Classrooms</div>
+          <div class="card-sub">
+            सभी कक्षाओं में प्रोजेक्टर / LED Panel, डिजिटल कंटेंट और ऑडियो–विजुअल टीचिंग।
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔬</div>
+          <div class="card-title">Science Labs</div>
+          <div class="card-sub">
+            Physics, Chemistry और Biology के लिए अलग-अलग well-equipped प्रयोगशालाएँ।
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon">💻</div>
+          <div class="card-title">Computer Lab</div>
+          <div class="card-sub">
+            हाई-स्पीड इंटरनेट, updated systems और basic से advanced IT skills की ट्रेनिंग।
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon">📚</div>
+          <div class="card-title">Library</div>
+          <div class="card-sub">
+            Competitive, Board, Literature और General Knowledge की हज़ारों किताबें।
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚽</div>
+          <div class="card-title">Sports & Playground</div>
+          <div class="card-sub">
+            क्रिकेट, फुटबॉल, कबड्डी, एथलेटिक्स आदि के लिए बड़ा खेल मैदान।
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🚌</div>
+          <div class="card-title">Transport</div>
+          <div class="card-sub">
+            सुरक्षित बस सुविधा, fixed routes और trained drivers के साथ GPS monitored service (coming soon)।
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section id="gallery">
-    <h2>विद्यालय गैलरी</h2>
-    <img src="school.jpg" class="gallery-img" alt="School">
-    <img src="playground.jpg" class="gallery-img" alt="Playground">
-    <img src="classroom.jpg" class="gallery-img" alt="Classroom">
-    <img src="library.jpg" class="gallery-img" alt="Library">
-    <img src="lab.jpg" class="gallery-img" alt="Lab">
+  <!-- NOTICES + TIMETABLE -->
+  <section id="notices">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker">UPDATES • समाचार एवं घोषणाएँ</div>
+        <div class="section-title">Latest News & Important Notices</div>
+        <div class="section-subtitle">
+          यहाँ से आप रिज़ल्ट, हॉलीडे, एग्ज़ाम और इवेंट्स से जुड़ी अहम जानकारी देख सकते हैं।
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="notice-board">
+          <div class="notice-header">
+            <div>📢 News & Notices</div>
+            <div class="notice-tag">Updated: 10 Dec 2025</div>
+          </div>
+          <ul class="notice-list">
+            <li>
+              <div class="notice-date">12 June 2025</div>
+              <div class="notice-text">कक्षा 10 एवं 12 के बोर्ड रिज़ल्ट विद्यालय notice board तथा website पर जारी कर दिए गए हैं।</div>
+            </li>
+            <li>
+              <div class="notice-date">15 June 2025</div>
+              <div class="notice-text">ग्रीष्मकालीन अवकाश 15 जून से 30 जून तक रहेगा। विद्यालय 1 जुलाई से पुनः खुलेगा।</div>
+            </li>
+            <li>
+              <div class="notice-date">20 June 2025</div>
+              <div class="notice-text">वार्षिक खेलकूद प्रतियोगिता के लिए रजिस्ट्रेशन प्रारम्भ। इच्छुक छात्र अपने class teacher से सम्पर्क करें।</div>
+            </li>
+            <li>
+              <div class="notice-date">25 June 2025</div>
+              <div class="notice-text">बस सुविधा के समय में परिवर्तन किया गया है। नए टाइम–टेबल के लिए transport notice देखें।</div>
+            </li>
+          </ul>
+          <div class="notice-pill">
+            🔔 Online Notice Panel & SMS Alerts – Coming Soon
+          </div>
+        </div>
+
+        <div class="timetable">
+          <h3>दैनिक समय–सारणी (School Timing)</h3>
+          <div class="time-row">
+            <div class="time-label">07:45 – 08:00 AM</div>
+            <div class="time-desc">प्रवेश एवं उपस्थिति</div>
+          </div>
+          <div class="time-row">
+            <div class="time-label">08:00 – 08:15 AM</div>
+            <div class="time-desc">प्रार्थना, Thought of the Day & News</div>
+          </div>
+          <div class="time-row">
+            <div class="time-label">08:15 – 11:00 AM</div>
+            <div class="time-desc">पाठ्यक्रम आधारित कक्षाएँ (Core Subjects)</div>
+          </div>
+          <div class="time-row">
+            <div class="time-label">11:00 – 11:30 AM</div>
+            <div class="time-desc">Mid-Day Break / Lunch</div>
+          </div>
+          <div class="time-row">
+            <div class="time-label">11:30 – 01:00 PM</div>
+            <div class="time-desc">Classes + Activity / Sports / Lab</div>
+          </div>
+          <div class="time-row">
+            <div class="time-label">01:00 PM</div>
+            <div class="time-desc">छुट्टी</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
- <section id="timetable">
-  <div class="timetable-container">
-    <h2>📅 विद्यालय समय-सारणी</h2>
-    <table class="timetable-table">
-      <tr>
-        <th>🕰️ समय</th>
-        <th>कार्य</th>
-      </tr>
-      <tr>
-        <td>07:45 AM - 08:00 AM</td>
-        <td>प्रवेश एवं उपस्थिति</td>
-      </tr>
-      <tr>
-        <td>08:00 AM - 08:15 AM</td>
-        <td>प्रातःकालीन प्रार्थना एवं समाचार वाचन</td>
-      </tr>
-      <tr>
-        <td>08:15 AM - 11:00 AM</td>
-        <td>पाठ्यक्रम आधारित कक्षाएँ</td>
-      </tr>
-      <tr>
-        <td>11:00 AM - 11:30 AM</td>
-        <td>मध्याह्न भोजन अवकाश</td>
-      </tr>
-      <tr>
-        <td>11:30 AM - 01:00 PM</td>
-        <td>पुनः कक्षाएँ</td>
-      </tr>
-      <tr>
-        <td>01:00 PM</td>
-        <td>छुट्टी</td>
-      </tr>
-    </table>
-  </div>
-</section>
-
-
-  <!-- Principal's Message Section -->
-<section id="principal-message" class="section message-section">
-  <div class="container">
-    <div class="message-box">
-      <div class="message-image">
-        <img src="principal.jpg" alt="Principal" />
+  <!-- RESULTS / ACHIEVEMENTS -->
+  <section id="results">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker">RESULTS • उपलब्धियाँ</div>
+        <div class="section-title">हमारे गौरव – Students की शानदार उपलब्धियाँ</div>
+        <div class="section-subtitle">
+          लगातार बेहतर रिज़ल्ट और अलग-अलग क्षेत्रों में प्रदर्शन ने बी एस इंटर कॉलेज को विशेष पहचान दी है।
+        </div>
       </div>
-      <div class="message-content">
-        <h2 class="section-title">प्राचार्य का संदेश | Principal's Message</h2>
-        <p>
-          प्रिय अभिभावकों, छात्रों एवं शिक्षकों,<br><br>
-          बी एस इंटर कॉलेज का उद्देश्य केवल शैक्षणिक सफलता नहीं, बल्कि समग्र व्यक्तित्व विकास है। हम बच्चों को नैतिक, बौद्धिक एवं सामाजिक रूप से सशक्त बनाते हैं। हमारी अनुभवी टीम आधुनिक तकनीक एवं मूल्यों के साथ शिक्षण कार्य करती है।<br><br>
-          Dear Parents, Students, and Teachers,<br>
-          Our mission is not only academic excellence but holistic development. We aim to build moral, intellectual, and social strength in our students. With an experienced team and modern teaching tools, we nurture future-ready individuals.<br><br>
-          धन्यवाद | Thank You<br><br>
-          <strong>- प्राचार्य / Principal</strong>
-        </p>
+
+      <div class="chips-row">
+        <span class="chip">100% Board Result – Class 10</span>
+        <span class="chip">98% Board Result – Class 12</span>
+        <span class="chip">State Level Sports Medal</span>
+        <span class="chip">National Science Olympiad Winner</span>
+        <span class="chip">Digital Learning Award</span>
+      </div>
+
+      <div class="topper-grid">
+        <div class="topper-card">
+          <div class="topper-badge">Board Topper</div>
+          <div class="topper-name">Anjali Sharma</div>
+          <div class="topper-class">Class 10 • 2024</div>
+          <div class="topper-score">96.8% • Science Stream</div>
+        </div>
+        <div class="topper-card">
+          <div class="topper-badge">Olympiad Rank 1</div>
+          <div class="topper-name">Rohan Verma</div>
+          <div class="topper-class">Class 8 • National Science Olympiad</div>
+          <div class="topper-score">All India Rank – 01</div>
+        </div>
+        <div class="topper-card">
+          <div class="topper-badge">Sports Star</div>
+          <div class="topper-name">School Sports Team</div>
+          <div class="topper-class">State Level Championship</div>
+          <div class="topper-score">Gold Medal – Kabaddi & Athletics</div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- Achievements Section -->
-<section id="achievements" class="section achievement-section">
-  <div class="container">
-    <h2 class="section-title">उपलब्धियाँ और प्रमुख झलकियाँ | Achievements & Highlights</h2>
-    <div class="achievement-grid">
-
-      <div class="achievement-item">
-        <i class="fas fa-trophy"></i>
-        <h4>100% बोर्ड परीक्षा परिणाम</h4>
-        <p>हमारे छात्रों ने लगातार बोर्ड परीक्षा में उत्कृष्ट प्रदर्शन किया है।</p>
-      </div>
-
-      <div class="achievement-item">
-        <i class="fas fa-medal"></i>
-        <h4>राज्य स्तरीय खेल प्रतियोगिता</h4>
-        <p>हमारे खिलाड़ियों ने राज्य स्तरीय खेलों में स्वर्ण पदक हासिल किए।</p>
-      </div>
-
-      <div class="achievement-item">
-        <i class="fas fa-book-reader"></i>
-        <h4>राष्ट्रीय ओलंपियाड विजेता</h4>
-        <p>कक्षा 8 के छात्र ने विज्ञान ओलंपियाड में पहला स्थान प्राप्त किया।</p>
-      </div>
-
-      <div class="achievement-item">
-        <i class="fas fa-globe"></i>
-        <h4>डिजिटल लर्निंग अवार्ड</h4>
-        <p>स्कूल को Smart School पुरस्कार से सम्मानित किया गया।</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-<!-- Admission Section -->
-<section id="admission" class="section admission-section">
-  <div class="container">
-    <h2 class="section-title">प्रवेश प्रक्रिया | Admission Procedure</h2>
-    <div class="admission-content">
-      <p>हमारी प्रवेश प्रक्रिया पारदर्शी और सरल है। अभिभावक नीचे दिए गए चरणों का पालन कर सकते हैं:</p>
-      <ul>
-        <li>📄 <strong>फॉर्म भरना:</strong> ऑनलाइन या स्कूल कार्यालय से प्रवेश फॉर्म प्राप्त करें।</li>
-        <li>🧾 <strong>दस्तावेज़ जमा:</strong> जन्म प्रमाणपत्र, पिछली कक्षा की मार्कशीट आदि संलग्न करें।</li>
-        <li>🧑‍🏫 <strong>इंटरव्यू/परीक्षा:</strong> आवश्यकतानुसार प्रवेश परीक्षा या इंटरव्यू लिया जाएगा।</li>
-        <li>✅ <strong>स्वीकृति:</strong> चयन के बाद प्रवेश शुल्क जमा कर प्रवेश सुनिश्चित करें।</li>
-      </ul>
-    </div>
-  </div>
-  <a href="admission.html">ऑनलाइन प्रवेश</a>
-
-</section>
-
   </section>
-<section id="school-tour">
-  <div class="tour-container">
-    <h2>🏫 स्कूल टूर वीडियो</h2>
-    <p>हमारे विद्यालय की झलक देखें:</p>
-    <div class="video-wrapper">
-      <iframe width="560" height="315" 
-        src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
-        title="School Tour Video" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    </div>
-  </div>
-</section>
 
-
-  <!-- Contact Section - Option 1 -->
-<section id="contact" class="contact-clean">
-  <div class="container">
-    <h2 class="section-title">📞 संपर्क करें</h2>
-    <p class="contact-desc">आप किसी भी समय हमसे संपर्क कर सकते हैं। नीचे दिए गए फॉर्म का उपयोग करें या दिए गए विवरण पर संपर्क करें।</p>
-    
-    <div class="contact-content">
-      <div class="contact-left">
-        <form>
-          <input type="text" placeholder="पूरा नाम" required>
-          <input type="email" placeholder="ईमेल" required>
-          <input type="text" placeholder="विषय">
-          <textarea rows="4" placeholder="आपका संदेश..." required></textarea>
-          <button type="submit">संदेश भेजें</button>
-        </form>
+  <!-- ADMISSION -->
+  <section id="admission">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker">ADMISSION • प्रवेश प्रक्रिया</div>
+        <div class="section-title">साधारण और पारदर्शी Admission Process</div>
+        <div class="section-subtitle">
+          Online form + सरल डॉक्यूमेंटेशन – ताकि Parents के लिए प्रक्रिया आसान रहे।
+        </div>
       </div>
-      <div class="contact-right">
-        <p><strong>🏫 विद्यालय:</strong> बी एस इंटर कॉलेज</p>
-        <p><strong>📍 पता:</strong> नरायनपुर तेजू, मुरादाबाद, उत्तर प्रदेश</p>
-        <p><strong>📞 फोन:</strong> +91 8006209405</p>
-        <p><strong>✉️ ईमेल:</strong> bsintercollege@email.com</p>
-        <p><strong>🌐 वेबसाइट:</strong> www.bsintercollege.in</p>
+
+      <div class="two-col">
+        <div class="admission-card">
+          <div class="card-title" style="margin-bottom:6px;">Admission Steps (6 से 12 तक सभी कक्षाएँ)</div>
+          <ul class="admission-steps">
+            <li>
+              <span class="step-number">1</span>
+              <span><b>Form भरें:</b> Online या विद्यालय कार्यालय से Admission Form प्राप्त करें।</span>
+            </li>
+            <li>
+              <span class="step-number">2</span>
+              <span><b>डॉक्यूमेंट जमा:</b> जन्म प्रमाणपत्र, पिछली कक्षा की Marksheet, Transfer Certificate आदि संलग्न करें।</span>
+            </li>
+            <li>
+              <span class="step-number">3</span>
+              <span><b>Test / Interview:</b> आवश्यकता अनुसार प्रवेश परीक्षा या इंटरव्यू आयोजित किया जाएगा।</span>
+            </li>
+            <li>
+              <span class="step-number">4</span>
+              <span><b>Confirmation:</b> चयन के बाद Fee जमा कर प्रवेश सुनिश्चित करें।</span>
+            </li>
+          </ul>
+          <button class="btn btn-primary" style="margin-top:10px;" onclick="alert('Online admission form ke liye aap backend (PHP/MySQL) se connect kar sakte hain. Abhi ye demo button hai.')">
+            📝 Fill Online Form (Demo)
+          </button>
+        </div>
+
+        <div class="principal-card">
+          <div class="principal-tag">
+            🔒 Secure Records • Digital Fee • e-Result (Future Ready)
+          </div>
+          <p class="principal-text">
+            हमारा उद्देश्य हर अभिभावक को <b>clear communication</b> और हर छात्र को <b>growth tracking</b> उपलब्ध कराना है।  
+            इसी दिशा में हम जल्द ही <b>Online Fee Payment, Result Panel और Parent Mobile App</b> launch करने की दिशा में कार्य कर रहे हैं।
+          </p>
+          <div class="principal-name">
+            – Management, बी एस इंटर कॉलेज
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-kicker">CONTACT • संपर्क</div>
+        <div class="section-title">हमसे संपर्क करें</div>
+        <div class="section-subtitle">
+          किसी भी Query, Admission Detail या Feedback के लिए आप हमें संदेश भेज सकते हैं।
+        </div>
+      </div>
 
+      <div class="contact-grid">
+        <div class="contact-card">
+          <form class="contact-form" onsubmit="handleContact(event)">
+            <div>
+              <div class="field-label">आपका नाम</div>
+              <input class="input" type="text" id="contactName" required />
+            </div>
+            <div>
+              <div class="field-label">मोबाइल / ईमेल</div>
+              <input class="input" type="text" id="contactInfo" required />
+            </div>
+            <div>
+              <div class="field-label">कक्षा (यदि छात्र के लिए पूछताछ)</div>
+              <input class="input" type="text" id="contactClass" placeholder="जैसे: 6, 9, 11 Science" />
+            </div>
+            <div>
+              <div class="field-label">संदेश / Message</div>
+              <textarea class="textarea" id="contactMessage" required></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">संदेश भेजें</button>
+          </form>
+        </div>
 
+        <div class="contact-details">
+          <div class="detail-row">
+            <div class="detail-label">विद्यालय</div>
+            <div class="detail-value">बी एस इंटर कॉलेज</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">पता</div>
+            <div class="detail-value">
+              नरायनपुर तेजू, मुरादाबाद, उत्तर प्रदेश
+            </div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">फोन</div>
+            <div class="detail-value">+91 8006209405</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">ईमेल</div>
+            <div class="detail-value">bsintercollege@email.com</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">वेबसाइट</div>
+            <div class="detail-value">www.bsintercollege.in</div>
+          </div>
+          <div class="detail-row">
+            <div class="detail-label">Office Timing</div>
+            <div class="detail-value">Mon–Sat • 08:00 AM – 01:30 PM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- FOOTER -->
   <footer>
-    <p>&copy; 2025 बी एस इंटर कॉलेज | सभी अधिकार सुरक्षित</p>
+    <div class="container footer-inner">
+      <div>© 2025 बी एस इंटर कॉलेज • All Rights Reserved.</div>
+      <div class="footer-right">
+        Designed with ❤️ for students | Powered by Aditya’s Dream Project
+      </div>
+    </div>
   </footer>
 
   <script>
-    const newsList = [
-      "20 मई 2025: ग्रीष्मकालीन अवकाश 21 मई से 25 जून तक रहेगा।",
-      "15 मई 2025: ग्रीष्मकालीन अवकाश 21 मई से होगा।",
-      "10 मई 2025: छात्राओं के लिए निःशुल्क स्वास्थ्य जांच शिविर।",
-      "5 मई 2025: स्कूल की वेबसाइट का नया अपडेट जारी किया गया।",
-      "1 मई 2025: नए शैक्षणिक सत्र के लिए प्रवेश प्रक्रिया शुरू।",
-      "28 अप्रैल 2025: विज्ञान मेला सफलतापूर्वक सम्पन्न हुआ।"
-    ];
-
-    let currentIndex = 0;
-
-    function showNews(index) {
-      const newsContent = document.getElementById('news-content');
-      newsContent.textContent = newsList[index];
+    // MOBILE NAV
+    function toggleNav() {
+      const nav = document.getElementById("navLinks");
+      nav.classList.toggle("open");
     }
 
-    function nextNews() {
-      currentIndex = (currentIndex + 1) % newsList.length;
-      showNews(currentIndex);
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
-    function prevNews() {
-      currentIndex = (currentIndex - 1 + newsList.length) % newsList.length;
-      showNews(currentIndex);
+    // LOGIN MODAL
+    let currentRole = "student";
+
+    function openLoginModal() {
+      document.getElementById("loginModal").style.display = "flex";
+    }
+    function closeLoginModal() {
+      document.getElementById("loginModal").style.display = "none";
     }
 
-    // Auto switch every 10 seconds
-    setInterval(nextNews, 5000);
+    function selectRole(role) {
+      currentRole = role;
+      document.querySelectorAll(".login-tab").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.role === role);
+      });
+    }
 
-    // Initial display
-    showNews(currentIndex);
+    function handleLogin(e) {
+      e.preventDefault();
+      const user = document.getElementById("loginUsername").value.trim();
+      const pass = document.getElementById("loginPassword").value.trim();
+      const session = document.getElementById("loginSession").value;
+
+      if (!user || !pass) {
+        alert("कृपया सभी details भरें।");
+        return;
+      }
+
+      // यहाँ बाद में PHP + MySQL के साथ असली validation लगा सकते हैं
+      alert(
+        (currentRole === "admin" ? "Admin" : "Student") +
+          " login request:\nUsername: " +
+          user +
+          "\nSession: " +
+          session +
+          "\n\nYe abhi demo login hai. Aap isko backend se connect kar sakte hain."
+      );
+      closeLoginModal();
+      e.target.reset();
+    }
+
+    // CONTACT
+    function handleContact(e) {
+      e.preventDefault();
+      const name = document.getElementById("contactName").value.trim();
+      const info = document.getElementById("contactInfo").value.trim();
+      const cls = document.getElementById("contactClass").value.trim();
+      const msg = document.getElementById("contactMessage").value.trim();
+
+      alert(
+        "धन्यवाद " +
+          name +
+          "!\n\nआपका संदेश प्राप्त हो गया है। हमारी team आपसे शीघ्र contact करेगी।\n\nSummary:\nContact: " +
+          info +
+          (cls ? "\nClass: " + cls : "") +
+          "\nMessage: " +
+          msg
+      );
+
+      e.target.reset();
+    }
+
+    // Close modal on backdrop click
+    document.getElementById("loginModal").addEventListener("click", function (e) {
+      if (e.target === this) closeLoginModal();
+    });
   </script>
-
 </body>
-
-
 </html>
