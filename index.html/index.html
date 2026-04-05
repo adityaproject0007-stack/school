@@ -1,171 +1,448 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>B S Inter College</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>बी. एस. इंटर कॉलेज | B. S. Inter College</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;600;700&family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Modern CSS Reset & Variables */
+        :root {
+            --brand-blue: #1e3a8a; 
+            --brand-orange: #ea580c; 
+            --brand-teal: #0f766e; 
+            --bg-body: #f8fafc;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+            --radius-md: 8px;
+            --radius-lg: 16px;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', 'Mukta', sans-serif; }
+        body { background-color: var(--bg-body); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#f4f6f9}
+        /* Floating WhatsApp Button */
+        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background-color: #25d366; color: white; border-radius: 50%; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); z-index: 2000; transition: 0.3s; text-decoration: none;}
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; }
 
-/* HEADER */
-header{
-background:#0b3d91;
-color:#fff;
-display:flex;
-justify-content:space-between;
-padding:15px 40px;
-align-items:center;
-}
+        /* Top Bar */
+        .top-bar { background-color: var(--brand-blue); color: var(--white); padding: 8px 5%; font-size: 13px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .top-bar-left span { margin-right: 20px; font-weight: 400; }
+        .top-bar-right { font-weight: 600; letter-spacing: 0.5px; }
 
-.logo{font-size:22px;font-weight:600;}
+        /* Header & Navbar Combined */
+        .navbar { background: var(--white); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-md); }
+        .nav-brand { display: flex; align-items: center; gap: 15px; }
+        .nav-logo i { font-size: 45px; color: var(--brand-orange); }
+        .nav-brand h1 { font-size: 26px; color: var(--brand-blue); font-weight: 800; line-height: 1.1; }
+        .nav-brand p { font-size: 13px; color: var(--text-light); font-weight: 600; letter-spacing: 1px; }
+        
+        .nav-menu { display: flex; gap: 20px; list-style: none; }
+        .nav-menu a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 14px; transition: 0.3s; display: flex; flex-direction: column; align-items: center; line-height: 1.2;}
+        .nav-menu a span { font-size: 11px; color: var(--brand-orange); font-family: 'Mukta', sans-serif;}
+        .nav-menu a:hover, .nav-menu a.active { color: var(--brand-orange); }
+        
+        .nav-btn { background: var(--brand-orange); color: var(--white); border: none; padding: 10px 25px; border-radius: 30px; font-weight: 700; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 10px rgba(234, 88, 12, 0.3); display: flex; flex-direction: column; align-items: center; line-height: 1.1;}
+        .nav-btn span { font-size: 10px; font-weight: 400;}
+        .nav-btn:hover { background: #c2410c; transform: translateY(-2px); }
 
-nav a{color:#fff;margin:0 10px;text-decoration:none;}
-nav a:hover{color:gold}
+        /* Hero Banner */
+        .hero { 
+            height: 75vh; min-height: 500px;
+            background: linear-gradient(rgba(30, 58, 138, 0.8), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1600') center/cover fixed;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--white); padding: 20px;
+        }
+        .session-badge { background: var(--brand-orange); padding: 5px 20px; border-radius: 30px; font-size: 14px; font-weight: 700; letter-spacing: 2px; margin-bottom: 20px; animation: pulse 2s infinite; }
+        .hero h2 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 10px; }
+        .hero h3 { font-size: 2rem; font-family: 'Mukta', sans-serif; color: #fed7aa; margin-bottom: 15px;}
+        .hero p { font-size: 1.2rem; font-weight: 300; opacity: 0.9; max-width: 700px; }
 
-/* HERO */
-.hero{
-height:90vh;
-background:linear-gradient(#0008,#0008),
-url('https://images.unsplash.com/photo-1588072432836-e10032774350');
-background-size:cover;
-background-position:center;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-color:#fff;
-text-align:center;
-}
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(234, 88, 12, 0); } 100% { box-shadow: 0 0 0 0 rgba(234, 88, 12, 0); } }
 
-.hero h1{font-size:45px}
-.btn{background:gold;padding:12px 25px;border:none;cursor:pointer}
+        /* Live Updates Ticker */
+        .ticker-wrap { background: #ffedd5; border-bottom: 3px solid var(--brand-orange); padding: 10px 5%; display: flex; align-items: center; gap: 15px; overflow: hidden; }
+        .ticker-title { background: var(--brand-orange); color: var(--white); padding: 4px 15px; border-radius: 4px; font-weight: 700; font-size: 13px; white-space: nowrap; z-index: 10; }
+        .ticker-text { color: #9a3412; font-weight: 600; font-size: 15px; white-space: nowrap; animation: ticker 25s linear infinite; }
+        @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-/* SECTION */
-.section{text-align:center;padding:60px 20px}
+        /* Main Grid Layout */
+        .main-container { padding: 50px 5%; max-width: 1400px; margin: auto; display: grid; grid-template-columns: 2fr 1.1fr; gap: 40px; align-items: start; }
 
-/* NOTICE BOARD */
-.notice-board{
-background:#fff;
-padding:20px;
-margin:20px auto;
-width:80%;
-border-radius:10px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
+        /* --- LEFT COLUMN --- */
+        .left-col { display: flex; flex-direction: column; gap: 40px; }
+        
+        /* About Box */
+        .about-box { background: var(--white); padding: 40px; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border: 1px solid #e2e8f0; }
+        .about-box h3 { font-size: 28px; color: var(--brand-blue); margin-bottom: 5px; font-weight: 800;}
+        .about-box h4 { font-size: 20px; color: var(--brand-orange); font-family: 'Mukta', sans-serif; margin-bottom: 20px; border-bottom: 3px solid var(--brand-orange); display: inline-block; padding-bottom: 5px; }
+        .about-box p { font-size: 16px; color: var(--text-light); margin-bottom: 15px; text-align: justify; }
+        
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; text-align: center; }
+        .stat-item { background: #f0f9ff; padding: 20px; border-radius: var(--radius-md); border: 1px solid #bae6fd; }
+        .stat-item h4 { font-size: 32px; font-weight: 800; color: var(--brand-blue); line-height: 1;}
+        .stat-item span { font-size: 13px; font-weight: 600; color: var(--text-light); display: block; margin-top: 5px;}
+        .stat-item.orange { background: #fff7ed; border-color: #fed7aa; }
+        .stat-item.orange h4 { color: var(--brand-orange); }
 
-.notice{
-padding:10px;
-border-left:5px solid gold;
-margin:10px 0;
-text-align:left;
-}
+        /* Admission Blog Box */
+        .blog-box { background: linear-gradient(135deg, #1e3a8a, #0f172a); color: var(--white); padding: 40px; border-radius: var(--radius-lg); position: relative; overflow: hidden; box-shadow: var(--shadow-lg); }
+        .blog-box::after { content: '\f19d'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; top: -20px; right: 10px; font-size: 150px; color: rgba(255,255,255,0.05); }
+        .blog-badge { background: var(--brand-orange); font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; margin-bottom: 15px; display: inline-block; }
+        .blog-box h3 { font-size: 26px; font-weight: 800; line-height: 1.3; margin-bottom: 5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); font-family: 'Mukta', sans-serif;}
+        .blog-box h4 { font-size: 18px; color: #fed7aa; margin-bottom: 20px; }
+        .blog-box p { font-size: 16px; color: #bfdbfe; margin-bottom: 20px; text-align: justify; line-height: 1.7; position: relative; z-index: 2;}
+        .download-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--brand-orange); color: var(--white); padding: 12px 30px; border-radius: 30px; font-size: 16px; font-weight: 700; text-decoration: none; transition: 0.3s; position: relative; z-index: 2; box-shadow: 0 5px 15px rgba(234, 88, 12, 0.4);}
+        .download-btn:hover { background: #c2410c; transform: translateY(-3px); }
 
-/* HIDDEN ADMIN BUTTON */
-.admin-btn{
-position:fixed;
-top:10px;
-right:10px;
-width:50px;
-height:50px;
-opacity:0;
-cursor:pointer;
-}
+        /* --- RIGHT COLUMN --- */
+        .right-col { display: flex; flex-direction: column; gap: 30px; }
 
-/* FOOTER */
-footer{
-background:#0b3d91;
-color:#fff;
-text-align:center;
-padding:20px;
-}
+        /* Widget Base Style */
+        .widget { background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); border: 1px solid #e2e8f0; overflow: hidden; }
+        .widget-head { padding: 15px 20px; color: var(--white); font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+        .widget-head span { font-size: 12px; font-weight: 400; font-family: 'Mukta', sans-serif; background: rgba(0,0,0,0.2); padding: 2px 8px; border-radius: 12px;}
+        .widget-body { padding: 20px; }
 
-.whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:green;
-color:#fff;
-padding:15px;
-border-radius:50%;
-}
-</style>
+        /* Notice Board Widget */
+        .head-notice { background: var(--brand-blue); }
+        .notice-scroll { height: 250px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding-right: 5px;}
+        .notice-scroll::-webkit-scrollbar { width: 6px; }
+        .notice-scroll::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 10px; }
+        .notice-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .notice-item { background: #f8fafc; padding: 12px; border-left: 4px solid var(--brand-orange); border-radius: 4px; transition: 0.3s; cursor: pointer;}
+        .notice-item:hover { background: #f1f5f9; transform: translateX(5px); }
+        .notice-date { display: block; font-size: 12px; font-weight: 700; color: var(--brand-orange); margin-bottom: 5px; }
+        .notice-item p { font-size: 14px; font-weight: 600; color: var(--text-main); line-height: 1.4; }
 
+        /* Admit Card Widget */
+        .head-admit { background: var(--brand-orange); }
+        .exam-row { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; padding-bottom: 12px; margin-bottom: 12px; }
+        .exam-row h4 { font-size: 15px; font-weight: 700; color: var(--text-main); }
+        .exam-row p { font-size: 12px; color: var(--text-light); }
+        .exam-row i { color: var(--brand-blue); font-size: 20px; cursor: pointer; transition: 0.3s; }
+        .exam-row i:hover { color: var(--brand-orange); }
+        .admit-input { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 14px; margin-top: 10px; outline: none; }
+        .admit-input:focus { border-color: var(--brand-orange); }
+        .admit-btn { width: 100%; background: var(--text-main); color: var(--white); border: none; padding: 10px; border-radius: 4px; font-weight: 700; margin-top: 10px; cursor: pointer; transition: 0.3s; }
+        .admit-btn:hover { background: #1e293b; }
+
+        /* Results Widget */
+        .head-result { background: var(--brand-teal); }
+        .result-link { display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 6px; text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 14px; transition: 0.3s; margin-bottom: 8px;}
+        .result-link:hover { background: #f0fdfa; color: var(--brand-teal); }
+        .result-link i { font-size: 18px; }
+        .badge-new { background: #fee2e2; color: #dc2626; font-size: 10px; padding: 2px 6px; border-radius: 4px; margin-left: auto; }
+
+        /* ================= NEW SECTIONS ================= */
+        
+        /* Principal Message Section */
+        .msg-section { background: #f0f9ff; padding: 60px 5%; border-top: 1px solid #e0f2fe; border-bottom: 1px solid #e0f2fe;}
+        .msg-container { max-width: 1000px; margin: auto; background: var(--white); padding: 40px; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); display: flex; gap: 30px; align-items: center; border-left: 8px solid var(--brand-blue);}
+        .msg-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid #bae6fd; flex-shrink: 0;}
+        .msg-text h3 { font-size: 24px; color: var(--brand-blue); margin-bottom: 5px; }
+        .msg-text h4 { font-size: 16px; color: var(--brand-orange); font-family: 'Mukta', sans-serif; margin-bottom: 15px; }
+        .msg-text p { font-style: italic; color: var(--text-light); font-size: 16px; margin-bottom: 15px;}
+        .msg-text strong { color: var(--text-main); }
+
+        /* Facilities Grid Section */
+        .fac-section { padding: 60px 5%; max-width: 1400px; margin: auto; text-align: center; }
+        .sec-title { font-size: 32px; color: var(--brand-blue); font-weight: 800; margin-bottom: 5px; }
+        .sec-subtitle { font-size: 18px; color: var(--brand-orange); font-family: 'Mukta', sans-serif; margin-bottom: 40px; }
+        .fac-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .fac-card { background: var(--white); padding: 30px; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1px solid #e2e8f0; transition: 0.3s; }
+        .fac-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--brand-orange); }
+        .fac-icon { font-size: 40px; color: var(--brand-blue); margin-bottom: 15px; }
+        .fac-card h4 { font-size: 18px; color: var(--text-main); font-weight: 700; }
+        .fac-card p { font-size: 14px; color: var(--text-light); font-family: 'Mukta', sans-serif;}
+
+        /* Mini Gallery Section */
+        .gallery-mini { padding: 0 5% 60px; max-width: 1400px; margin: auto; }
+        .gal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-bottom: 20px;}
+        .gal-img { width: 100%; height: 200px; object-fit: cover; border-radius: var(--radius-md); transition: 0.3s; cursor: pointer;}
+        .gal-img:hover { transform: scale(1.03); box-shadow: var(--shadow-md); }
+        .view-all-btn { display: inline-block; background: transparent; color: var(--brand-blue); border: 2px solid var(--brand-blue); padding: 8px 20px; border-radius: 30px; font-weight: 600; text-decoration: none; transition: 0.3s;}
+        .view-all-btn:hover { background: var(--brand-blue); color: var(--white); }
+
+        /* Footer */
+        footer { background: #0f172a; color: #94a3b8; padding: 50px 5% 20px; border-top: 4px solid var(--brand-orange); }
+        .footer-grid { max-width: 1400px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 30px;}
+        .footer-col h3 { color: var(--white); font-size: 20px; margin-bottom: 15px; }
+        .footer-col p { font-size: 14px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;}
+        .footer-col a { color: #94a3b8; text-decoration: none; display: block; margin-bottom: 10px; font-size: 14px; transition: 0.3s;}
+        .footer-col a:hover { color: var(--brand-orange); padding-left: 5px;}
+        .footer-bottom { text-align: center; border-top: 1px solid #1e293b; padding-top: 20px; font-size: 13px; }
+
+        /* Responsive */
+        @media (max-width: 992px) { 
+            .main-container { grid-template-columns: 1fr; }
+            .nav-menu { display: none; } /* Hide menu on mobile for simplicity in this static file */
+            .hero h2 { font-size: 2.5rem; }
+            .msg-container { flex-direction: column; text-align: center; }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-<div class="logo">🏫 B S Inter College</div>
-<nav>
-<a href="#">Home</a>
-<a href="#">About</a>
-<a href="#">Admissions</a>
-<a href="#">Gallery</a>
-<a href="#">Contact</a>
-</nav>
-</header>
+    <a href="https://wa.me/918006209405" target="_blank" class="whatsapp-float">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
-<!-- HERO -->
-<section class="hero">
-<h1>Welcome to B S Inter College</h1>
-<p>Empowering Students for a Better Future</p>
-<button class="btn">Apply Now</button>
-</section>
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <span><i class="fa-solid fa-phone"></i> 8006209405, 6398949485</span>
+            <span><i class="fa-solid fa-envelope"></i> bsicnarayanpurteju@gmail.com</span>
+        </div>
+        <div class="top-bar-right">
+            UDISE CODE: 09040612005 | RECOGNIZED BY U.P. BOARD (उ.प्र. बोर्ड द्वारा मान्यता प्राप्त)
+        </div>
+    </div>
 
-<!-- NOTICE BOARD -->
-<section class="section">
-<h2>📢 Notice Board</h2>
-<div class="notice-board" id="noticeBoard"></div>
-</section>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <div class="nav-logo"><i class="fa-solid fa-school-flag"></i></div>
+            <div>
+                <h1>B. S. Inter College</h1>
+                <p>NARAYANPUR TEJU, MORADABAD</p>
+            </div>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="index.html" class="active">Home <span>मुख्य पृष्ठ</span></a></li>
+            <li><a href="about.html">About Us <span>हमारे बारे में</span></a></li>
+            <li><a href="timetable.html">Timetable <span>समय-सारणी</span></a></li>
+            <li><a href="gallery.html">Gallery <span>चित्र दीर्घा</span></a></li>
+            <li><a href="contact.html">Contact <span>संपर्क करें</span></a></li>
+        </ul>
+        <button class="nav-btn"><i class="fa-solid fa-user-lock"></i> ERP Login <span>छात्र लॉगिन</span></button>
+    </nav>
 
-<!-- HIDDEN ADMIN BUTTON -->
-<div class="admin-btn" onclick="openAdmin()"></div>
+    <section class="hero">
+        <div class="session-badge">SESSION / सत्र 2026-27</div>
+        <h2>Empowering Minds,<br> Shaping the Future</h2>
+        <h3>सशक्त विचार, उज्ज्वल भविष्य</h3>
+        <p>Tradition of Excellence in Education, Discipline, and Innovation at Narayanpur Teju.</p>
+    </section>
 
-<!-- FOOTER -->
-<footer>
-Powered by Aditya’s Dream Project | जय भोलेनाथ 🚩
-</footer>
+    <div class="ticker-wrap">
+        <div class="ticker-title"><i class="fa-solid fa-bolt"></i> Live Updates</div>
+        <div style="overflow: hidden; width: 100%;">
+            <div class="ticker-text">
+                🔥 Admission for Session 2026-27 is now LIVE! (सत्र 2026-27 के लिए प्रवेश प्रारंभ) &nbsp; | &nbsp; 📄 Class 10th & 12th Pre-Board Results Declared &nbsp; | &nbsp; 🎯 Download Admit Cards for Annual Exams from the portal &nbsp; | &nbsp; 🏆 Inter-School Sports Meet scheduled for next month.
+            </div>
+        </div>
+    </div>
 
-<div class="whatsapp">💬</div>
+    <div class="main-container">
+        
+        <div class="left-col">
+            
+            <div class="about-box">
+                <h3>Welcome to B.S. Inter College</h3>
+                <h4>आपका विद्यालय में स्वागत है</h4>
+                <p>Located in the heart of Narayanpur Teju, Moradabad, B.S. Inter College stands as a beacon of quality education. We are dedicated to nurturing young minds by blending traditional moral values with modern, tech-driven educational practices. (हमारा उद्देश्य छात्रों को उत्तम शिक्षा और संस्कार प्रदान करना है।)</p>
+                <p>Our campus is equipped with high-tech smart classrooms, fully functional science and computer laboratories, and extensive sports facilities. We believe in holistic development, ensuring our students are ready to face the challenges of the 21st century with confidence and integrity.</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h4>1500+</h4>
+                        <span>Students Enrolled <br> (विद्यार्थी)</span>
+                    </div>
+                    <div class="stat-item orange">
+                        <h4>50+</h4>
+                        <span>Expert Faculty <br> (अनुभवी शिक्षक)</span>
+                    </div>
+                    <div class="stat-item">
+                        <h4>100%</h4>
+                        <span>Board Result <br> (परीक्षा परिणाम)</span>
+                    </div>
+                </div>
+            </div>
 
-<script>
+            <div class="blog-box">
+                <span class="blog-badge">Latest Announcement (नवीनतम सूचना)</span>
+                <h3>🎓 सपनों की उड़ान को दें सही दिशा:<br>सत्र 2026-27 के लिए प्रवेश प्रारंभ!</h3>
+                <h4>Admissions Open for Academic Session 2026-27</h4>
+                <p>हर माता-पिता का सपना होता है कि उनका बच्चा एक सुरक्षित, अनुशासित और आधुनिक माहौल में शिक्षा प्राप्त करे। <strong>बी. एस. इंटर कॉलेज</strong> पिछले कई वर्षों से इसी सपने को साकार कर रहा है। हमें यह घोषणा करते हुए बेहद खुशी हो रही है कि शैक्षणिक सत्र 2026-2027 के लिए कक्षा 1 से 12 तक की प्रवेश प्रक्रिया (Admission Process) आधिकारिक रूप से शुरू हो चुकी है।</p>
+                <p>आज के डिजिटल युग में केवल किताबी ज्ञान काफी नहीं है। इसलिए हमने अपने परिसर को पूरी तरह से अपग्रेड किया है, जहाँ <strong>Smart Classes, Modern Labs, और Sports</strong> की बेहतरीन सुविधाएँ मौजूद हैं। समय तेजी से बीत रहा है और सीटें सीमित हैं। अपने बच्चे के सुनहरे भविष्य की नींव आज ही रखें।</p>
+                
+                <a href="admission.html" target="_blank" class="download-btn">
+                    <i class="fa-solid fa-download"></i> Admission Form / प्रवेश फॉर्म 
+                </a>
+            </div>
 
-// Load saved notices
-let notices = JSON.parse(localStorage.getItem("notices")) || [];
+        </div>
 
-const board = document.getElementById("noticeBoard");
+        <div class="right-col">
+            
+            <div class="widget">
+                <div class="widget-head head-notice">
+                    <div><i class="fa-regular fa-bell"></i> Notice Board</div>
+                    <span>सूचना पट्ट</span>
+                </div>
+                <div class="widget-body">
+                    <div class="notice-scroll">
+                        <div class="notice-item" onclick="window.location.href='admission.html'">
+                            <span class="notice-date">05 April, 2026</span>
+                            <p>Admission Forms for Session 2026-27 are now available online. (सत्र 2026-27 प्रवेश फॉर्म उपलब्ध)</p>
+                        </div>
+                        <div class="notice-item">
+                            <span class="notice-date">02 April, 2026</span>
+                            <p>Fee submission deadline for the first quarter extended till 15th April.</p>
+                        </div>
+                        <div class="notice-item">
+                            <span class="notice-date">28 March, 2026</span>
+                            <p>Mandatory uniform guidelines for Summer Session released. (ग्रीष्मकालीन यूनिफॉर्म नियम)</p>
+                        </div>
+                        <div class="notice-item">
+                            <span class="notice-date">20 March, 2026</span>
+                            <p>Parent-Teacher Meeting (PTM) Scheduled for Class IX and XI on Saturday.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-function renderNotices(){
-board.innerHTML = "";
-notices.forEach(n=>{
-board.innerHTML += `<div class="notice">${n}</div>`;
-});
-}
+            <div class="widget">
+                <div class="widget-head head-admit">
+                    <div><i class="fa-regular fa-id-card"></i> Download Admit Cards</div>
+                    <span>प्रवेश पत्र</span>
+                </div>
+                <div class="widget-body">
+                    <div class="exam-row">
+                        <div>
+                            <h4>Annual Exam 2026</h4>
+                            <p>Classes VI to IX & XI (वार्षिक परीक्षा)</p>
+                        </div>
+                        <i class="fa-solid fa-cloud-arrow-down"></i>
+                    </div>
+                    <div class="exam-row">
+                        <div>
+                            <h4>UP Board Practicals</h4>
+                            <p>Class X & XII (बोर्ड प्रयोगात्मक)</p>
+                        </div>
+                        <i class="fa-solid fa-cloud-arrow-down"></i>
+                    </div>
+                    
+                    <div style="margin-top: 15px;">
+                        <input type="text" class="admit-input" placeholder="Registration No. / रोल नंबर दर्ज करें">
+                        <button class="admit-btn">Generate Admit Card / निकालें</button>
+                    </div>
+                </div>
+            </div>
 
-renderNotices();
+            <div class="widget">
+                <div class="widget-head head-result">
+                    <div><i class="fa-solid fa-trophy"></i> Examination Results</div>
+                    <span>परीक्षा परिणाम</span>
+                </div>
+                <div class="widget-body" style="padding: 15px;">
+                    <a href="#" class="result-link">
+                        <i class="fa-solid fa-file-pdf" style="color: #ef4444;"></i> 
+                        Pre-Board Results (Class 10 & 12)
+                        <span class="badge-new">NEW</span>
+                    </a>
+                    <a href="#" class="result-link">
+                        <i class="fa-solid fa-link" style="color: #3b82f6;"></i> 
+                        Half-Yearly Marksheets Portal
+                    </a>
+                    <a href="#" class="result-link">
+                        <i class="fa-solid fa-medal" style="color: #eab308;"></i> 
+                        Merit List - Annual Sports Meet 2025
+                    </a>
+                </div>
+            </div>
 
-// Hidden admin access
-function openAdmin(){
-let pass = prompt("Enter Passcode");
+        </div>
+    </div>
 
-if(pass === "8752"){
-let text = prompt("Enter Notice");
+    <section class="msg-section">
+        <div class="msg-container">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=300" alt="Principal" class="msg-img">
+            <div class="msg-text">
+                <h3>Principal's Message</h3>
+                <h4>प्रधानाचार्य का संदेश</h4>
+                <p>"A school is a temple of learning where minds are shaped and characters are built. At B.S. Inter College, our goal is not just academic excellence, but the creation of responsible, well-rounded citizens who will lead tomorrow's world."</p>
+                <p>"हमारा उद्देश्य केवल शिक्षा देना नहीं, बल्कि छात्रों के जीवन में अनुशासन, संस्कार और आत्मविश्वास भरना है।"</p>
+                <strong>- Principal, B.S. Inter College</strong>
+            </div>
+        </div>
+    </section>
 
-if(text){
-notices.push(text);
-localStorage.setItem("notices", JSON.stringify(notices));
-renderNotices();
-}
-}else{
-alert("Wrong Passcode");
-}
-}
+    <section class="fac-section">
+        <h2 class="sec-title">Our Key Facilities</h2>
+        <h3 class="sec-subtitle">हमारी प्रमुख सुविधाएँ</h3>
+        
+        <div class="fac-grid">
+            <div class="fac-card">
+                <i class="fa-solid fa-laptop-file fac-icon"></i>
+                <h4>Smart Classrooms</h4>
+                <p>आधुनिक प्रोजेक्टर और डिजिटल बोर्ड युक्त कक्षाएँ</p>
+            </div>
+            <div class="fac-card">
+                <i class="fa-solid fa-flask fac-icon"></i>
+                <h4>Science & Tech Labs</h4>
+                <p>प्रैक्टिकल शिक्षा के लिए पूर्णतः सुसज्जित प्रयोगशालाएँ</p>
+            </div>
+            <div class="fac-card">
+                <i class="fa-solid fa-book-open-reader fac-icon"></i>
+                <h4>Vast Library</h4>
+                <p>हज़ारों पुस्तकों और सन्दर्भ ग्रंथो का विशाल संग्रह</p>
+            </div>
+            <div class="fac-card">
+                <i class="fa-solid fa-bus fac-icon"></i>
+                <h4>Transport Facility</h4>
+                <p>छात्रों की सुरक्षा हेतु सुरक्षित परिवहन सुविधा</p>
+            </div>
+        </div>
+    </section>
 
-</script>
+    <section class="gallery-mini">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px;">
+            <div>
+                <h2 class="sec-title" style="margin-bottom:0; text-align: left;">Campus Gallery</h2>
+                <h3 class="sec-subtitle" style="margin-bottom:0; text-align: left;">परिसर की झलकियाँ</h3>
+            </div>
+            <a href="gallery.html" class="view-all-btn">View All / सभी देखें</a>
+        </div>
+        
+        <div class="gal-grid">
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=400" class="gal-img" alt="School Building">
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=400" class="gal-img" alt="Classroom">
+            <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=400" class="gal-img" alt="Sports">
+            <img src="https://images.unsplash.com/photo-1568667256549-094345857637?q=80&w=400" class="gal-img" alt="Library">
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>B. S. Inter College</h3>
+                <p><i class="fa-solid fa-location-dot"></i> Narayanpur Teju, Dilari, <br>Moradabad (U.P.) - 244401</p>
+                <p><i class="fa-solid fa-phone"></i> 8006209405, 6398949485</p>
+                <p><i class="fa-solid fa-envelope"></i> bsicnarayanpurteju@gmail.com</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links (महत्वपूर्ण लिंक)</h3>
+                <a href="admission.html" target="_blank">> Admission Form (प्रवेश फॉर्म)</a>
+                <a href="about.html">> About Us (परिचय)</a>
+                <a href="timetable.html">> Exam Timetable (परीक्षा समय-सारणी)</a>
+                <a href="contact.html">> Contact Us (संपर्क करें)</a>
+            </div>
+            <div class="footer-col">
+                <h3>School Timings (समय)</h3>
+                <p>Summer (ग्रीष्मकाल): 07:30 AM - 01:30 PM</p>
+                <p>Winter (शीतकाल): 08:30 AM - 02:30 PM</p>
+                <p style="color: #ef4444;">Sunday (रविवार): Closed (अवकाश)</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 All Rights Reserved. Designed for B. S. Inter College Official Portal.
+        </div>
+    </footer>
 
 </body>
 </html>
