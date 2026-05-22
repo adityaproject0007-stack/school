@@ -1,48 +1,367 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ऑनलाइन प्रवेश फॉर्म</title>
-  <link rel="stylesheet" href="admission.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advance Admission Form | B.S. Inter College</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- RESET & BASIC --- */
+        * { box-sizing: border-box; }
+        body { 
+            background: #cbd5e1; 
+            font-family: 'Roboto', Arial, sans-serif; 
+            margin: 0; padding: 20px;
+            display: flex; justify-content: center;
+        }
+
+        /* --- A4 PAPER EXACT SIZING --- */
+        .paper {
+            width: 210mm; 
+            height: 296mm; /* Exact A4 Height to prevent page breaks */
+            background: white; 
+            padding: 8mm; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative; 
+            overflow: hidden;
+            display: flex; flex-direction: column;
+        }
+
+        /* --- WATERMARK --- */
+        .watermark {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px; 
+            opacity: 0.08; 
+            filter: grayscale(100%); 
+            z-index: 0; pointer-events: none;
+        }
+
+        /* --- OFFICIAL BORDER FRAME --- */
+        .border-frame {
+            width: 100%; flex-grow: 1;
+            border: 2px solid #000;
+            outline: 1px solid #000;
+            outline-offset: 3px;
+            padding: 12px;
+            position: relative; z-index: 1;
+            display: flex; flex-direction: column;
+        }
+
+        /* --- HEADER --- */
+        .header-section {
+            display: flex; align-items: flex-start; justify-content: space-between;
+            border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 10px;
+        }
+        .logo-img { height: 115px; width: 100px; object-fit: contain; }
+        .school-text { text-align: center; flex-grow: 1; padding: 0 10px; }
+        .school-code { font-size: 11px; font-weight: bold; letter-spacing: 1px; color: #333; }
+        .school-name {
+            font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; 
+            text-transform: uppercase; color: #000; line-height: 1.1; margin: 4px 0;
+        }
+        .school-addr { font-size: 12px; font-weight: bold; color: #222; }
+        .form-title {
+            background: #000; color: #fff; display: inline-block; padding: 4px 20px; 
+            border-radius: 20px; font-size: 13px; font-weight: bold; margin-top: 5px; letter-spacing: 1px;
+            -webkit-print-color-adjust: exact; print-color-adjust: exact;
+        }
+
+        /* --- PHOTO BOX --- */
+        .photo-box {
+            width: 90px; height: 110px; border: 1px solid #000;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; font-size: 9px; color: #555; background: #fafafa;
+        }
+
+        /* --- OFFICE USE --- */
+        .office-use {
+            border: 1px solid #000; padding: 8px; margin-bottom: 10px;
+            font-size: 11px; background: #f8f9fa;
+            -webkit-print-color-adjust: exact; print-color-adjust: exact;
+        }
+        .office-row { display: flex; justify-content: space-between; margin-bottom: 5px; }
+        .office-row:last-child { margin-bottom: 0; }
+
+        /* --- FORM COMPONENTS --- */
+        .sec-head {
+            background: #e2e8f0; padding: 4px 8px; font-weight: bold; font-size: 11px; 
+            text-transform: uppercase; border: 1px solid #000; margin: 8px 0;
+            -webkit-print-color-adjust: exact; print-color-adjust: exact;
+        }
+        .form-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 5px; }
+        .form-group { flex: 1; min-width: 120px; }
+        label { display: block; font-size: 10px; font-weight: bold; text-transform: uppercase; color: #333; margin-bottom: 2px; }
+        .input-line {
+            width: 100%; border: none; border-bottom: 1px dotted #000;
+            background: transparent; font-size: 12px; font-weight: 500;
+            padding: 2px 0; font-family: 'Times New Roman', serif;
+        }
+        .input-line:focus { outline: none; border-bottom: 1px solid #000; }
+        
+        /* --- CHECKBOXES --- */
+        .checkbox-group { display: flex; gap: 7px; margin-top: 3px; flex-wrap: wrap; }
+        .chk-item { font-size: 11px; display: flex; align-items: center; gap: 2px; }
+        .box-sq { width: 12px; height: 12px; border: 1px solid #000; display: inline-block; }
+
+        /* --- TABLES --- */
+        table { width: 100%; border-collapse: collapse; margin-bottom: 7px; font-size: 10px; }
+        th, td { border: 1px solid #000; padding: 2px; text-align: center; height: 20px; }
+        th { background: #f1f5f9; font-weight: bold; text-transform: uppercase; -webkit-print-color-adjust: exact; }
+        td input { width: 100%; border: none; background: transparent; text-align: center; outline: none; font-size: 11px;}
+
+        /* --- CHECKLIST --- */
+        .doc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-bottom: 7px; }
+
+        /* --- DECLARATION & FOOTER --- */
+        .declaration { font-size: 10px; text-align: justify; line-height: 1.0; margin-bottom: 15px; font-style: italic; }
+        .footer { display: flex; justify-content: space-between; padding-top: 2px; margin-top: auto; }
+        .sign-line { border-top: 1px solid #000; width: 160px; text-align: center; padding-top: 5px; font-weight: bold; font-size: 11px; }
+
+        /* --- PRINT BUTTON --- */
+        .print-btn {
+            position: fixed; bottom: 30px; right: 30px; background: #0f172a; color: white; padding: 15px 30px;
+            border: none; border-radius: 50px; font-weight: bold; cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: 0.3s; z-index: 1000;
+        }
+        .print-btn:hover { transform: scale(1.05); background: #1e293b; }
+
+        @media print {
+            @page { size: A4 portrait; margin: 0; }
+            body { background: white; padding: 0; display: block; }
+            .paper { box-shadow: none; margin: 0; width: 210mm; height: 297mm; }
+            .print-btn { display: none; }
+            .input-line { border-bottom: 1px dotted #000 !important; }
+        }
+    </style>
 </head>
 <body>
-  <section class="admission-form">
-    <h2>🎓 ऑनलाइन प्रवेश फॉर्म</h2>
-    <form action="confirmation.html" method="POST">
-      <label>छात्र का नाम:
-        <input type="text" name="studentName" required>
-      </label>
-      <label>कक्षा:
-        <select name="class" required>
-          <option value="">कक्षा चुनें</option>
-          <option>कक्षा 1</option>
-          <option>कक्षा 2</option>
-          <option>कक्षा 3</option>
-          <option>कक्षा 4</option>
-          <option>कक्षा 5</option>
-          <option>कक्षा 6</option>
-          <option>कक्षा 7</option>
-          <option>कक्षा 8</option>
-          <option>कक्षा 9</option>
-          <option>कक्षा 10</option>
-          <option>कक्षा 11</option>
-          <option>कक्षा 12</option>
-        </select>
-      </label>
-      <label>जन्म तिथि:
-        <input type="date" name="dob" required>
-      </label>
-      <label>पिता/अभिभावक का नाम:
-        <input type="text" name="fatherName" required>
-      </label>
-      <label>मोबाइल नंबर:
-        <input type="tel" name="phone" required>
-      </label>
-      <label>पूरा पता:
-        <textarea name="address" required></textarea>
-      </label>
-      <button type="submit">प्रवेश हेतु आवेदन करें</button>
-    </form>
-  </section>
+
+<button onclick="window.print()" class="print-btn"><i class="fa-solid fa-print"></i> Print Official Form</button>
+
+<div class="paper">
+    <img src="logo1.png" class="watermark" onerror="this.style.display='none'">
+    
+    <div class="border-frame">
+        
+        <div class="header-section">
+            <img src="logo1.png" class="logo-img" alt="Logo" onerror="this.style.display='none'; this.style.border='1px solid #000';">
+            
+            <div class="school-text">
+                <div class="school-code">AFFILIATION NO: 211321 | UDISE CODE: 09040612005</div>
+                <h1 class="school-name">B. S. INTER COLLEGE</h1>
+                <div class="school-addr">Narayanpur Teju, Dilari, Moradabad (U.P.) - 244401</div>
+                <div class="form-title">ADMISSION APPLICATION FORM (2026-27)</div>
+            </div>
+
+            <div class="photo-box">Affix Recent<br>Passport Size<br>Photograph</div>
+        </div>
+
+        <div class="office-use">
+            <div style="font-weight: bold; margin-bottom: 5px; font-size: 10px; text-decoration: underline;">FOR OFFICE USE ONLY:</div>
+            <div class="office-row">
+                <div>Reg./SR No: <input type="text" class="input-line" style="width:100px;"></div>
+                <div>Admission Date: <input type="text" class="input-line" style="width:100px;"></div>
+                <div>Class Admitted: <input type="text" class="input-line" style="width:80px;"></div>
+                <div>Section: <input type="text" class="input-line" style="width:50px;"></div>
+            </div>
+            <div class="office-row">
+                <div>Fee Receipt No: <input type="text" class="input-line" style="width:100px;"></div>
+                <div>Amount Paid (₹): <input type="text" class="input-line" style="width:100px;"></div>
+                <div>Sign of Admission Incharge: <input type="text" class="input-line" style="width:150px;"></div>
+            </div>
+        </div>
+
+        <div class="sec-head">1. Student's Personal Details</div>
+        
+        <div class="form-row">
+            <div class="form-group" style="flex: 2;">
+                <label>Student's Full Name (In Block Letters)</label>
+                <input type="text" class="input-line">
+            </div>
+            <div class="form-group" style="flex: 1;">
+                <label>Name in Hindi </label>
+                <input type="text" class="input-line">
+            </div>
+            <div class="form-group">
+                <label>Admission Sought In Class</label>
+                <input type="text" class="input-line">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Date of Birth (DD/MM/YYYY)</label>
+                <input type="text" class="input-line">
+            </div>
+            <div class="form-group" style="flex: 1.5;">
+                <label>Date of Birth (In Words)</label>
+                <input type="text" class="input-line">
+            </div>
+            <div class="form-group">
+                <label>Gender</label>
+                <div class="checkbox-group">
+                    <span class="chk-item"><span class="box-sq"></span> M</span>
+                    <span class="chk-item"><span class="box-sq"></span> F</span>
+                    <span class="chk-item"><span class="box-sq"></span> Other</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Aadhar Number (12 Digit)</label>
+                <input type="text" class="input-line" maxlength="12">
+            </div>
+            <div class="form-group">
+                <label>Blood Group</label>
+                <input type="text" class="input-line">
+            </div>
+            <div class="form-group">
+                <label>Religion</label>
+                <input type="text" class="input-line">
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                <div class="checkbox-group">
+                    <span class="chk-item"><span class="box-sq"></span> GEN</span>
+                    <span class="chk-item"><span class="box-sq"></span> OBC</span>
+                    <span class="chk-item"><span class="box-sq"></span> SC/ST</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sec-head">2. Parent's / Guardian's Details</div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Father's Name</label>
+                <input type="text" class="input-line">
+            </div>
+            <div class="form-group">
+                <label>Father's Occupation & Income</label>
+                <input type="text" class="input-line">
+            </div>
+            <div class="form-group">
+                <label>Father's Mobile No</label>
+                <input type="text" class="input-line">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Mother's Name</label>
+                <input type="text" class="input-line">
+            </div>
+            <div class="form-group">
+                <label>Mother's Occupation</label>
+                <input type="text" class="input-line">
+            </div>
+            <div class="form-group">
+                <label>WhatsApp / Alt Mobile No</label>
+                <input type="text" class="input-line">
+            </div>
+        </div>
+
+        <div class="sec-head">3. Contact & Bank Details (For Scholarship Purposes)</div>
+        <div class="form-row">
+            <div class="form-group" style="flex: 2;">
+                <label>Permanent Address (Village/City, District)</label>
+                <input type="text" class="input-line">
+            </div>
+            <div class="form-group">
+                <label>Pin Code</label>
+                <input type="text" class="input-line">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Bank Account Number</label>
+                <input type="text" class="input-line">
+            </div>
+            <div class="form-group">
+                <label>IFSC Code</label>
+                <input type="text" class="input-line">
+            </div>
+            <div class="form-group">
+                <label>Bank Name & Branch</label>
+                <input type="text" class="input-line">
+            </div>
+        </div>
+
+        <div class="sec-head">4. Previous Academic Record</div>
+        <table>
+            <thead>
+                <tr>
+                    <th width="15%">Class Passed</th>
+                    <th width="15%">Passing Year</th>
+                    <th width="35%">Name of School / Board</th>
+                    <th width="10%">Roll No.</th>
+                    <th width="10%">Max Marks</th>
+                    <th width="15%">Marks Obt. / %</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="sec-head">5. Subject Selection (For Class 9th / 11th admissions)</div>
+        <div class="form-row" style="margin-bottom: 10px;">
+            <div class="form-group">
+                <label>Stream / Faculty</label>
+                <div class="checkbox-group">
+                    <span class="chk-item"><span class="box-sq"></span> Science</span>
+                    <span class="chk-item"><span class="box-sq"></span> Commerce</span>
+                    <span class="chk-item"><span class="box-sq"></span> Arts / Humanities</span>
+                    <span class="chk-item"><span class="box-sq"></span> Agriculture</span>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group"><label>1. Compulsory</label><input type="text" class="input-line"></div>
+            <div class="form-group"><label>2. Compulsory</label><input type="text" class="input-line"></div>
+            <div class="form-group"><label>3. Elective 1</label><input type="text" class="input-line"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-group"><label>4. Elective 2</label><input type="text" class="input-line"></div>
+            <div class="form-group"><label>5. Elective 3</label><input type="text" class="input-line"></div>
+            <div class="form-group"><label>6. Additional (If any)</label><input type="text" class="input-line"></div>
+        </div>
+
+        <div class="sec-head">6. Documents Attached (Tick Applicable)</div>
+        <div class="doc-grid">
+            <div class="chk-item"><span class="box-sq"></span> Transfer Certificate (Original)</div>
+            <div class="chk-item"><span class="box-sq"></span> Previous Marksheet Photocopy</div>
+            <div class="chk-item"><span class="box-sq"></span> Aadhar Card Photocopy</div>
+            <div class="chk-item"><span class="box-sq"></span> Caste Certificate (If Applicable)</div>
+            <div class="chk-item"><span class="box-sq"></span> Income Certificate</div>
+            <div class="chk-item"><span class="box-sq"></span> Bank Passbook Photocopy</div>
+            <div class="chk-item"><span class="box-sq"></span> 4 Passport Size Photos</div>
+            <div class="chk-item"><span class="box-sq"></span> Migration Cert. (Other Board)</div>
+        </div>
+
+        <div class="declaration">
+            <strong>Declaration by Parent & Student:</strong><br>
+            We hereby declare that all information provided in this application form is true and correct to the best of our knowledge. We understand that admission granted is provisional and can be cancelled if any information is found false. We agree to abide by all the rules, regulations, and fee structures of B.S. Inter College. We will ensure minimum 75% attendance as per board norms.
+        </div>
+
+        <div class="footer">
+            <div class="sign-line">Signature of Parent / Guardian<br><span style="font-weight:normal; font-size:9px;">Date: ........................</span></div>
+            <div class="sign-line">Signature of Student<br><span style="font-weight:normal; font-size:9px;">Date: ........................</span></div>
+            <div class="sign-line">Principal / Verification Officer<br><span style="font-weight:normal; font-size:9px;">Seal & Signature</span></div>
+        </div>
+
+    </div>
+</div>
+
 </body>
 </html>
