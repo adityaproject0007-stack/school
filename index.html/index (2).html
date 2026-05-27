@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B. S. Inter College | UP Board Affiliated</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins (English) & Mukta (Hindi) -->
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
+        .font-hindi { font-family: 'Mukta', sans-serif; } 
+        .marquee-container { overflow: hidden; white-space: nowrap; }
+        .marquee-content { display: inline-block; animation: marquee 30s linear infinite; }
+        .marquee-content:hover { animation-play-state: paused; }
+        @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+        /* Smooth interactions */
+        .interactive-element { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .interactive-element:active { transform: scale(0.95); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Top Contact Bar -->
+    <div class="bg-blue-950 text-gray-200 text-xs md:text-sm py-2 px-4 border-b border-blue-900 hidden md:block">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex space-x-6 font-medium">
+                <span class="font-hindi tracking-wide text-yellow-400 hover:text-white transition-colors duration-300 cursor-default"><i class="fa-solid fa-building-columns mr-1"></i> यू.पी. बोर्ड, प्रयागराज से मान्यता प्राप्त</span>
+            </div>
+            <div class="flex space-x-6 font-medium items-center">
+                <span class="hover:text-yellow-400 interactive-element cursor-pointer"><i class="fa-solid fa-phone mr-2 text-yellow-400"></i> +91 98765 43210</span>
+                <span class="hover:text-yellow-400 interactive-element cursor-pointer"><i class="fa-solid fa-envelope mr-2 text-yellow-400"></i> info@bsintercollege.com</span>
+                <div class="flex space-x-4 border-l border-blue-800 pl-4">
+                    <a href="#" class="hover:text-yellow-400 interactive-element hover:-translate-y-1 inline-block"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-yellow-400 interactive-element hover:-translate-y-1 inline-block"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-4 group cursor-pointer interactive-element">
+                <div class="w-14 h-14 bg-gradient-to-br from-blue-900 to-blue-800 text-white rounded-full flex items-center justify-center text-xl font-bold border-2 border-yellow-500 shadow-md group-hover:rotate-12 transition duration-300">BS</div>
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-extrabold text-blue-950 leading-tight tracking-tight group-hover:text-blue-700 transition">B. S. Inter College</h1>
+                    <p class="text-[13px] md:text-[14px] text-red-600 font-bold tracking-wide font-hindi leading-snug">माध्यमिक शिक्षा परिषद, उ.प्र., प्रयागराज द्वारा मान्यता प्राप्त</p>
+                    <p class="text-[10px] text-slate-500 font-semibold tracking-wider uppercase">Narayanpur Teju, Dilari, Moradabad</p>
+                </div>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden xl:flex space-x-6 font-semibold items-center text-sm">
+                <a href="#" class="text-blue-700 border-b-2 border-blue-700 pb-1 interactive-element hover:scale-105">Home</a>
+                <a href="#about" class="text-slate-600 hover:text-blue-700 interactive-element hover:scale-105">About</a>
+                <a href="#courses" class="text-slate-600 hover:text-blue-700 interactive-element hover:scale-105">Courses</a>
+                <a href="#gallery" class="text-slate-600 hover:text-blue-700 interactive-element hover:scale-105">Gallery</a>
+                <a href="fee_structure.html" target="_blank" class="text-slate-600 hover:text-blue-700 interactive-element hover:scale-105">Fees</a>
+                <a href="#contact" class="text-slate-600 hover:text-blue-700 interactive-element hover:scale-105">Contact</a>
+                
+                <a href="admission.html" target="_blank" class="bg-gradient-to-r from-yellow-500 to-yellow-400 hover:from-yellow-400 hover:to-yellow-300 text-blue-950 px-5 py-2.5 rounded-md font-bold shadow-lg interactive-element hover:-translate-y-1 hover:shadow-yellow-500/50 ml-2">
+                    <i class="fa-solid fa-user-plus mr-1"></i> Admissions
+                </a>
+            </div>
+            
+            <button id="mobile-menu-btn" class="xl:hidden text-2xl text-blue-900 p-2 focus:outline-none interactive-element"><i class="fa-solid fa-bars"></i></button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden bg-white border-t border-gray-100 absolute w-full shadow-2xl pb-4 px-4 xl:hidden origin-top animate-[fadeIn_0.2s_ease-out]">
+            <a href="#" class="block py-3 text-blue-700 font-bold border-b border-gray-100 hover:pl-2 transition-all">Home</a>
+            <a href="#about" class="block py-3 text-slate-600 font-semibold border-b border-gray-100 hover:pl-2 transition-all">About Us</a>
+            <a href="#courses" class="block py-3 text-slate-600 font-semibold border-b border-gray-100 hover:pl-2 transition-all">Courses (10th & 12th)</a>
+            <a href="fee_structure.html" class="block py-3 text-slate-600 font-semibold border-b border-gray-100 hover:pl-2 transition-all">Fee Structure</a>
+            <a href="admission.html" class="block mt-4 text-center bg-yellow-500 text-blue-950 py-3 rounded-md font-bold interactive-element">Apply for Admission</a>
+        </div>
+    </nav>
+
+    <!-- Notice Ticker -->
+    <div class="bg-red-600 text-white py-2 flex items-center shadow-inner relative z-10 hover:bg-red-700 transition duration-300">
+        <div class="bg-red-700 font-bold uppercase text-xs md:text-sm px-4 py-2 absolute left-0 z-20 h-full flex items-center shadow-md">
+            Latest <i class="fa-solid fa-bell ml-2 animate-pulse hidden sm:inline"></i>
+        </div>
+        <div class="marquee-container w-full text-sm font-medium pl-24 md:pl-32">
+            <div class="marquee-content cursor-pointer font-hindi md:font-sans hover:text-yellow-200 transition">
+                <span class="mx-4 text-yellow-300">•</span> Admissions Open for Session 2026-27 (Class 6th to 12th)! 
+                <span class="mx-4 text-yellow-300">•</span> UP Board Class 10th & 12th Admit Cards Available. 
+                <span class="mx-4 text-yellow-300">•</span> Pay Fees Online via UPI.
+                <span class="mx-4 text-yellow-300">•</span> यू.पी. बोर्ड परीक्षा 2026 की तैयारियाँ शुरू।
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="relative bg-blue-950 h-[550px] flex items-center justify-center text-center overflow-hidden">
+        <div class="absolute inset-0 bg-cover bg-center opacity-30 hover:scale-105 transition duration-[10s]" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-blue-950 via-blue-900/80 to-blue-950/40"></div>
+        
+        <div class="relative z-10 px-4 max-w-5xl mx-auto mt-[-20px]">
+            <div class="inline-block bg-white/10 border border-white/20 text-white px-6 py-2 rounded-full text-sm font-semibold tracking-wider mb-6 backdrop-blur-md shadow-lg hover:bg-white/20 transition cursor-default">
+                <i class="fa-solid fa-award text-yellow-400 mr-2 text-lg"></i> ESTD. 2010 | A Legacy of Excellence
+            </div>
+            <h1 class="text-4xl md:text-7xl font-extrabold text-white mb-6 drop-shadow-2xl tracking-tight leading-tight">
+                Shaping Brilliant Minds <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">Since 2010.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-blue-100 mb-10 font-medium max-w-3xl mx-auto leading-relaxed drop-shadow-md">
+                The most prestigious and highly acclaimed educational hub in Moradabad. Delivering UP Board State Toppers and unmatched academic brilliance for over 16 years.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <a href="admission.html" target="_blank" class="bg-gradient-to-r from-yellow-500 to-yellow-400 text-blue-950 font-extrabold py-4 px-10 rounded-lg shadow-[0_0_20px_rgba(234,179,8,0.5)] interactive-element hover:-translate-y-2 hover:scale-105 w-full sm:w-auto text-lg border border-yellow-300">
+                    Apply for Admission 2026-27 <i class="fa-solid fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Quick Access Portals -->
+    <section class="max-w-7xl mx-auto px-4 relative z-20 -mt-16 mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <a href="admit_card.html" target="_blank" class="bg-white rounded-2xl shadow-xl p-6 text-center border-b-[6px] border-blue-600 interactive-element hover:-translate-y-3 hover:shadow-2xl group">
+                <div class="w-20 h-20 mx-auto bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-3xl mb-4 group-hover:bg-blue-600 group-hover:text-white transition duration-300 group-hover:rotate-12 shadow-inner"><i class="fa-solid fa-id-card"></i></div>
+                <h3 class="font-extrabold text-xl text-slate-800 mb-1 group-hover:text-blue-700 transition">Admit Cards</h3>
+                <p class="text-xs font-bold text-slate-500 uppercase tracking-wide">Board & Internal Exams</p>
+            </a>
+
+            <div onclick="openQRModal()" class="cursor-pointer bg-white rounded-2xl shadow-xl p-6 text-center border-b-[6px] border-green-500 interactive-element hover:-translate-y-3 hover:shadow-2xl group">
+                <div class="w-20 h-20 mx-auto bg-green-50 text-green-500 rounded-full flex items-center justify-center text-3xl mb-4 group-hover:bg-green-500 group-hover:text-white transition duration-300 group-hover:scale-110 shadow-inner"><i class="fa-solid fa-qrcode"></i></div>
+                <h3 class="font-extrabold text-xl text-slate-800 mb-1 group-hover:text-green-600 transition">Pay Fees (UPI)</h3>
+                <p class="text-xs font-bold text-slate-500 uppercase tracking-wide">Instant Digital Receipt</p>
+            </div>
+
+            <a href="results.html" class="bg-white rounded-2xl shadow-xl p-6 text-center border-b-[6px] border-yellow-500 interactive-element hover:-translate-y-3 hover:shadow-2xl group">
+                <div class="w-20 h-20 mx-auto bg-yellow-50 text-yellow-600 rounded-full flex items-center justify-center text-3xl mb-4 group-hover:bg-yellow-500 group-hover:text-white transition duration-300 group-hover:-rotate-12 shadow-inner"><i class="fa-solid fa-square-poll-vertical"></i></div>
+                <h3 class="font-extrabold text-xl text-slate-800 mb-1 group-hover:text-yellow-600 transition">Check Results</h3>
+                <p class="text-xs font-bold text-slate-500 uppercase tracking-wide">Subjective & OMR</p>
+            </a>
+
+            <a href="study_material.html" class="bg-white rounded-2xl shadow-xl p-6 text-center border-b-[6px] border-purple-500 interactive-element hover:-translate-y-3 hover:shadow-2xl group">
+                <div class="w-20 h-20 mx-auto bg-purple-50 text-purple-600 rounded-full flex items-center justify-center text-3xl mb-4 group-hover:bg-purple-500 group-hover:text-white transition duration-300 group-hover:scale-110 shadow-inner"><i class="fa-solid fa-book-open-reader"></i></div>
+                <h3 class="font-extrabold text-xl text-slate-800 mb-1 group-hover:text-purple-600 transition">Study Materials</h3>
+                <p class="text-xs font-bold text-slate-500 uppercase tracking-wide">Notes & UP Board Syllabus</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Courses & UP Board Affiliation -->
+    <section id="courses" class="py-16 bg-blue-50 border-y border-blue-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <span class="text-blue-600 font-bold tracking-widest uppercase text-sm animate-pulse">Our Academic Excellence</span>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-blue-950 mt-2 mb-4">UP Board Curriculum (Hindi & English)</h2>
+                <div class="w-24 h-2 bg-yellow-500 mx-auto rounded-full"></div>
+                <p class="mt-4 text-slate-600 max-w-2xl mx-auto font-medium text-lg">Delivering 100% Board Results consistently. We prepare our students not just to pass, but to top the Madhyamik Shiksha Parishad examinations.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- High School -->
+                <div class="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden interactive-element hover:shadow-2xl hover:-translate-y-2">
+                    <div class="bg-blue-900 text-white p-5 text-center transition group-hover:bg-blue-800">
+                        <h3 class="text-2xl font-bold">High School</h3>
+                        <p class="text-yellow-400 text-sm font-bold tracking-widest uppercase mt-1">Class 9th & 10th</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-4 text-slate-700 font-bold">
+                            <li class="flex items-center hover:translate-x-2 transition cursor-default"><i class="fa-solid fa-check-circle text-green-500 mr-3 text-lg"></i> Hindi & English</li>
+                            <li class="flex items-center hover:translate-x-2 transition cursor-default"><i class="fa-solid fa-check-circle text-green-500 mr-3 text-lg"></i> Mathematics</li>
+                            <li class="flex items-center hover:translate-x-2 transition cursor-default font-hindi"><i class="fa-solid fa-check-circle text-green-500 mr-3 text-lg font-sans"></i> Science (विज्ञान)</li>
+                            <li class="flex items-center hover:translate-x-2 transition cursor-default"><i class="fa-solid fa-check-circle text-green-500 mr-3 text-lg"></i> Social Science</li>
+                            <li class="flex items-center hover:translate-x-2 transition cursor-default"><i class="fa-solid fa-check-circle text-green-500 mr-3 text-lg"></i> Drawing / Computer</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Intermediate Science -->
+                <div class="bg-white rounded-2xl shadow-2xl border-2 border-yellow-400 overflow-hidden interactive-element hover:shadow-[0_20px_50px_rgba(234,179,8,0.3)] hover:-translate-y-4 relative transform md:-translate-y-4 z-10">
+                    <div class="absolute top-0 right-0 bg-yellow-500 text-blue-950 text-xs font-black px-4 py-1.5 rounded-bl-xl shadow-md">MOST POPULAR</div>
+                    <div class="bg-gradient-to-r from-blue-800 to-blue-900 text-white p-6 text-center">
+                        <h3 class="text-2xl font-bold">Intermediate (Science)</h3>
+                        <p class="text-yellow-400 text-sm font-bold tracking-widest uppercase mt-1">Class 11th & 12th</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-4 text-slate-700 font-bold">
+                            <li class="flex items-center hover:translate-x-2 transition cursor-default font-hindi"><i class="fa-solid fa-microscope text-blue-500 mr-3 text-lg font-sans"></i> Physics (भौतिक विज्ञान)</li>
+                            <li class="flex items-center hover:translate-x-2 transition cursor-default font-hindi"><i class="fa-solid fa-flask text-blue-500 mr-3 text-lg font-sans"></i> Chemistry (रसायन विज्ञान)</li>
+                            <li class="flex items-center hover:translate-x-2 transition cursor-default font-hindi"><i class="fa-solid fa-dna text-blue-500 mr-3 text-lg font-sans"></i> Biology (जीव विज्ञान)</li>
+                            <li class="flex items-center hover:translate-x-2 transition cursor-default font-hindi"><i class="fa-solid fa-calculator text-blue-500 mr-3 text-lg font-sans"></i> Mathematics (गणित)</li>
+                            <li class="flex items-center hover:translate-x-2 transition cursor-default"><i class="fa-solid fa-language text-blue-500 mr-3 text-lg"></i> Hindi & English</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Intermediate Arts -->
+                <div class="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden interactive-element hover:shadow-2xl hover:-translate-y-2">
+                    <div class="bg-blue-900 text-white p-5 text-center">
+                        <h3 class="text-2xl font-bold">Intermediate (Arts)</h3>
+                        <p class="text-yellow-400 text-sm font-bold tracking-widest uppercase mt-1">Class 11th & 12th</p>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-4 text-slate-700 font-bold">
+                            <li class="flex items-center hover:translate-x-2 transition cursor-default"><i class="fa-solid fa-book-open text-purple-500 mr-3 text-lg"></i> History / Geography</li>
+                            <li class="flex items-center hover:translate-x-2 transition cursor-default"><i class="fa-solid fa-landmark text-purple-500 mr-3 text-lg"></i> Civics / Economics</li>
+                            <li class="flex items-center hover:translate-x-2 transition cursor-default"><i class="fa-solid fa-palette text-purple-500 mr-3 text-lg"></i> Sociology / Drawing</li>
+                            <li class="flex items-center hover:translate-x-2 transition cursor-default"><i class="fa-solid fa-language text-purple-500 mr-3 text-lg"></i> Hindi & English</li>
+                            <li class="flex items-center hover:translate-x-2 transition cursor-default"><i class="fa-solid fa-chart-line text-purple-500 mr-3 text-lg"></i> Commerce Available</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us & Extra Features -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-blue-950 mb-4 border-l-[6px] border-yellow-500 pl-5 leading-tight">Unrivaled Legacy <br>Since 2010</h2>
+                <p class="text-xl font-hindi text-red-600 font-extrabold mb-6 bg-red-50 inline-block px-4 py-2 rounded-lg border-2 border-red-200 shadow-sm interactive-element hover:bg-red-100 cursor-default">
+                    माध्यमिक शिक्षा परिषद, उत्तर प्रदेश, प्रयागराज द्वारा मान्यता प्राप्त
+                </p>
+                <p class="text-slate-700 mb-4 leading-relaxed font-semibold text-lg">
+                    Established in the year 2010, <span class="text-blue-900 font-bold">B.S. Inter College</span> has been the undisputed pioneer of quality education in Dilari, Moradabad. What started as a vision is now the most highly reputed institution, renowned for producing unparalleled UP Board Toppers year after year.
+                </p>
+                <p class="text-slate-600 mb-8 leading-relaxed font-medium">
+                    We don't just teach; we transform. With our state-of-the-art smart labs, advanced APAAR digital tracking, ultra-secure online portals, and highly experienced faculty, we guarantee an environment where every student thrives and excels in board examinations and beyond.
+                </p>
+                
+                <div class="grid grid-cols-2 gap-5 mt-4">
+                    <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200 interactive-element hover:bg-blue-50 hover:border-blue-300 shadow-sm"><i class="fa-solid fa-flask text-3xl text-blue-600"></i><span class="font-bold text-slate-800">Smart Science Labs</span></div>
+                    <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200 interactive-element hover:bg-blue-50 hover:border-blue-300 shadow-sm"><i class="fa-solid fa-computer text-3xl text-blue-600"></i><span class="font-bold text-slate-800">Hi-Tech IT Center</span></div>
+                    <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200 interactive-element hover:bg-blue-50 hover:border-blue-300 shadow-sm"><i class="fa-solid fa-bus text-3xl text-blue-600"></i><span class="font-bold text-slate-800">Secure Transport</span></div>
+                    <div class="flex items-center space-x-3 bg-slate-50 p-4 rounded-xl border border-slate-200 interactive-element hover:bg-blue-50 hover:border-blue-300 shadow-sm"><i class="fa-solid fa-medal text-3xl text-blue-600"></i><span class="font-bold text-slate-800">Top Faculty</span></div>
+                </div>
+            </div>
+            <div class="relative interactive-element hover:scale-[1.02]">
+                <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="rounded-2xl shadow-2xl border-[6px] border-white" alt="School Campus">
+                <div class="absolute -bottom-8 -left-8 bg-gradient-to-br from-yellow-500 to-yellow-400 text-blue-950 p-8 rounded-2xl shadow-2xl hidden md:block border-4 border-white interactive-element hover:scale-110">
+                    <h3 class="font-black text-5xl mb-1">2010</h3>
+                    <p class="font-bold tracking-widest text-lg">ESTABLISHED</p>
+                    <div class="w-full h-1 bg-blue-900 mt-2 opacity-50"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="py-16 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-4xl font-extrabold text-blue-950 mb-10 border-l-[6px] border-yellow-500 pl-5">Glimpses of Excellence</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="overflow-hidden rounded-xl shadow-lg interactive-element hover:shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&w=400&h=300&fit=crop" class="object-cover h-56 w-full hover:scale-110 transition duration-500" alt="Classroom">
+                </div>
+                <div class="overflow-hidden rounded-xl shadow-lg interactive-element hover:shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&w=400&h=300&fit=crop" class="object-cover h-56 w-full hover:scale-110 transition duration-500" alt="Library">
+                </div>
+                <div class="overflow-hidden rounded-xl shadow-lg interactive-element hover:shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1546410531-bea4caa92881?ixlib=rb-4.0.3&w=400&h=300&fit=crop" class="object-cover h-56 w-full hover:scale-110 transition duration-500" alt="Computer Lab">
+                </div>
+                <div class="overflow-hidden rounded-xl shadow-lg interactive-element hover:shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1526232761682-d26e03ac148e?ixlib=rb-4.0.3&w=400&h=300&fit=crop" class="object-cover h-56 w-full hover:scale-110 transition duration-500" alt="Sports">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form & Google Map -->
+    <section id="contact" class="py-20 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12">
+            <div class="bg-white p-10 rounded-3xl shadow-2xl border border-slate-100 interactive-element hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
+                <h2 class="text-3xl font-extrabold text-blue-950 mb-8">Get in Touch</h2>
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Full Name</label>
+                            <input type="text" class="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent bg-slate-50 transition" placeholder="Your Name">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Phone Number</label>
+                            <input type="text" class="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent bg-slate-50 transition" placeholder="Mobile No.">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">Email Address</label>
+                        <input type="email" class="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent bg-slate-50 transition" placeholder="Email">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">Message</label>
+                        <textarea rows="4" class="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent bg-slate-50 transition" placeholder="How can we help?"></textarea>
+                    </div>
+                    <button type="button" class="w-full bg-blue-900 hover:bg-blue-800 text-white font-extrabold text-lg py-4 rounded-xl shadow-lg interactive-element hover:-translate-y-1">Send Message <i class="fa-solid fa-paper-plane ml-2"></i></button>
+                </form>
+            </div>
+
+            <!-- Google Maps Iframe -->
+            <div class="bg-white p-4 rounded-3xl shadow-2xl border border-slate-100 h-full min-h-[450px] interactive-element hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)]">
+                <h2 class="text-2xl font-extrabold text-blue-950 mb-4 px-4 pt-2">Find Us on Map</h2>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3493.551711244342!2d78.7844089!3d28.8817208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390afb3127521791%3A0xc6fb694a5e3df569!2sDilari%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="85%" style="border:0; border-radius: 16px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="interactive-element hover:opacity-90"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW FULL-FAT FOOTER -->
+    <footer class="bg-blue-950 text-blue-100 pt-16 pb-8 border-t-[10px] border-yellow-500 relative overflow-hidden">
+        <!-- Background watermark -->
+        <i class="fa-solid fa-graduation-cap absolute -bottom-10 -right-10 text-[300px] text-white opacity-5 pointer-events-none"></i>
+        
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
+            
+            <!-- Column 1: About & UP Board -->
+            <div class="lg:pr-6">
+                <div class="flex items-center space-x-3 mb-6 interactive-element hover:scale-105 cursor-pointer">
+                    <div class="w-12 h-12 bg-yellow-500 text-blue-900 rounded-full flex items-center justify-center text-xl font-black shadow-[0_0_15px_rgba(234,179,8,0.5)]">BS</div>
+                    <h3 class="text-2xl font-extrabold text-white">B. S. Inter College</h3>
+                </div>
+                <div class="font-hindi bg-red-600 text-white text-sm font-bold px-3 py-1.5 rounded inline-block mb-4 shadow-md interactive-element hover:scale-105">
+                    माध्यमिक शिक्षा परिषद, उ.प्र. मान्यता प्राप्त
+                </div>
+                <p class="text-sm mb-6 leading-relaxed text-blue-200 font-medium">Since 2010, empowering the youth of Moradabad with supreme academic excellence, discipline, and state-of-the-art facilities. A legacy of producing true leaders.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 bg-blue-900 rounded-full flex items-center justify-center hover:bg-yellow-500 hover:text-blue-900 transition-all interactive-element hover:-translate-y-2"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="w-10 h-10 bg-blue-900 rounded-full flex items-center justify-center hover:bg-yellow-500 hover:text-blue-900 transition-all interactive-element hover:-translate-y-2"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 bg-blue-900 rounded-full flex items-center justify-center hover:bg-yellow-500 hover:text-blue-900 transition-all interactive-element hover:-translate-y-2"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <!-- Column 2: Quick Links -->
+            <div>
+                <h4 class="text-white font-extrabold mb-6 uppercase text-base tracking-widest border-b-2 border-yellow-500 inline-block pb-1">Quick Links</h4>
+                <ul class="space-y-4 text-sm font-medium">
+                    <li><a href="#about" class="hover:text-yellow-400 transition flex items-center interactive-element hover:translate-x-2"><i class="fa-solid fa-chevron-right mr-3 text-yellow-500 text-xs"></i> About Institution</a></li>
+                    <li><a href="#courses" class="hover:text-yellow-400 transition flex items-center interactive-element hover:translate-x-2"><i class="fa-solid fa-chevron-right mr-3 text-yellow-500 text-xs"></i> UP Board Curriculum</a></li>
+                    <li><a href="admission.html" target="_blank" class="hover:text-yellow-400 transition flex items-center interactive-element hover:translate-x-2"><i class="fa-solid fa-chevron-right mr-3 text-yellow-500 text-xs"></i> Admissions 2026-27</a></li>
+                    <li><a href="fee_structure.html" target="_blank" class="hover:text-yellow-400 transition flex items-center interactive-element hover:translate-x-2"><i class="fa-solid fa-chevron-right mr-3 text-yellow-500 text-xs"></i> Fee Structure</a></li>
+                    <li><a href="#gallery" class="hover:text-yellow-400 transition flex items-center interactive-element hover:translate-x-2"><i class="fa-solid fa-chevron-right mr-3 text-yellow-500 text-xs"></i> Campus Gallery</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Student Portals -->
+            <div>
+                <h4 class="text-white font-extrabold mb-6 uppercase text-base tracking-widest border-b-2 border-yellow-500 inline-block pb-1">Digital Portals</h4>
+                <ul class="space-y-4 text-sm font-medium">
+                    <li><a href="admit_card.html" target="_blank" class="hover:text-yellow-400 transition flex items-center interactive-element hover:translate-x-2"><i class="fa-solid fa-download mr-3 text-blue-400"></i> Download Admit Card</a></li>
+                    <li onclick="openQRModal()" class="cursor-pointer hover:text-yellow-400 transition flex items-center interactive-element hover:translate-x-2"><i class="fa-brands fa-google-pay mr-3 text-blue-400 text-lg"></i> Online UPI Fee Payment</li>
+                    <li><a href="results.html" target="_blank" class="hover:text-yellow-400 transition flex items-center interactive-element hover:translate-x-2"><i class="fa-solid fa-square-poll-vertical mr-3 text-blue-400 text-lg"></i> Board Exam Results</a></li>
+                    <li><a href="study_material.html" target="_blank" class="hover:text-yellow-400 transition flex items-center interactive-element hover:translate-x-2"><i class="fa-solid fa-book-open mr-3 text-blue-400"></i> Class 10/12 Study Notes</a></li>
+                    <li><a href="#" class="hover:text-yellow-400 transition flex items-center interactive-element hover:translate-x-2"><i class="fa-solid fa-id-badge mr-3 text-blue-400 text-lg"></i> APAAR ID Registration</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Contact Us -->
+            <div>
+                <h4 class="text-white font-extrabold mb-6 uppercase text-base tracking-widest border-b-2 border-yellow-500 inline-block pb-1">Contact Us</h4>
+                <ul class="space-y-5 text-sm font-medium">
+                    <li class="flex items-start interactive-element hover:translate-x-1 cursor-default">
+                        <i class="fa-solid fa-location-dot mt-1 mr-4 text-yellow-400 text-xl"></i> 
+                        <span class="text-blue-200">Narayanpur Teju, Dilari,<br>Moradabad, Uttar Pradesh - 244401</span>
+                    </li>
+                    <li class="flex items-center interactive-element hover:translate-x-1 cursor-pointer">
+                        <i class="fa-solid fa-phone mr-4 text-yellow-400 text-xl"></i> 
+                        <span class="text-blue-200 hover:text-yellow-400 transition">+91 98765 43210</span>
+                    </li>
+                    <li class="flex items-center interactive-element hover:translate-x-1 cursor-pointer">
+                        <i class="fa-solid fa-envelope mr-4 text-yellow-400 text-xl"></i> 
+                        <span class="text-blue-200 hover:text-yellow-400 transition">admin@bsintercollege.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Copyright Bottom -->
+        <div class="max-w-7xl mx-auto px-4 mt-16 pt-8 border-t border-blue-900/50 text-xs md:text-sm flex flex-col md:flex-row justify-between items-center text-blue-300 relative z-10">
+            <p class="font-bold tracking-wide mb-2 md:mb-0">&copy; 2010-2026 B. S. Inter College. All Rights Reserved.</p>
+            <p class="font-bold bg-blue-900 px-4 py-1.5 rounded-full border border-blue-800 interactive-element hover:bg-yellow-500 hover:text-blue-900 hover:border-yellow-400 transition cursor-pointer">
+                <i class="fa-solid fa-code mr-1"></i> System Developed & Maintained by IT Cell
+            </p>
+        </div>
+    </footer>
+
+    <!-- DYNAMIC UPI QR CODE MODAL -->
+    <div id="qrModal" class="hidden fixed inset-0 bg-black/80 z-[100] flex items-center justify-center backdrop-blur-md transition-opacity">
+        <div class="bg-white p-8 rounded-[2rem] shadow-2xl text-center max-w-sm w-full mx-4 relative transform scale-100 animate-[bounceIn_0.4s_cubic-bezier(0.175,0.885,0.32,1.275)] border-4 border-yellow-400">
+            <button onclick="closeQRModal()" class="absolute top-5 right-5 text-gray-400 hover:text-red-600 text-3xl interactive-element hover:rotate-90"><i class="fa-solid fa-circle-xmark"></i></button>
+            <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-4xl mx-auto mb-5 shadow-inner">
+                <i class="fa-brands fa-google-pay"></i>
+            </div>
+            <h3 class="font-black text-3xl text-blue-950 mb-1">Pay Online</h3>
+            <p class="text-sm text-slate-500 mb-6 font-bold">Scan QR with PhonePe, GPay, Paytm</p>
+            
+            <div class="p-4 border-2 border-dashed border-gray-300 rounded-2xl inline-block mb-5 bg-slate-50 interactive-element hover:scale-105 hover:border-blue-500 transition-colors">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=bsic@ptyes&pn=BS%20Inter%20College" alt="UPI QR Code" class="mx-auto w-48 h-48 rounded-lg shadow-sm">
+            </div>
+            
+            <p class="font-mono text-blue-950 font-black bg-blue-50 py-3 rounded-xl mb-4 border-2 border-blue-100 text-xl tracking-widest cursor-text select-all">bsic@ptyes</p>
+            <p class="text-xs text-red-600 font-extrabold bg-red-50 p-2 rounded-lg border border-red-100">* Please take a screenshot of your payment confirmation for fee receipt generation.</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Working Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        
+        btn.addEventListener('click', () => { 
+            menu.classList.toggle('hidden'); 
+        });
+
+        // QR Modal Logic
+        function openQRModal() {
+            document.getElementById('qrModal').classList.remove('hidden');
+        }
+        function closeQRModal() {
+            document.getElementById('qrModal').classList.add('hidden');
+        }
+
+        // Add custom Tailwind keyframes for the modal bounce effect dynamically
+        tailwind.config = {
+            theme: {
+                extend: {
+                    keyframes: {
+                        fadeIn: { '0%': { opacity: '0', transform: 'scale(0.95)' }, '100%': { opacity: '1', transform: 'scale(1)' } },
+                        bounceIn: {
+                            '0%': { opacity: '0', transform: 'scale(0.3)' },
+                            '50%': { opacity: '1', transform: 'scale(1.05)' },
+                            '70%': { transform: 'scale(0.9)' },
+                            '100%': { transform: 'scale(1)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
