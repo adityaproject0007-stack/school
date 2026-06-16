@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam & Practice Portal | B. S. Inter College</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; background-color: #f1f5f9; overflow-x: hidden; }
+        .font-hindi { font-family: 'Mukta', sans-serif; } 
+        
+        .interactive-btn { transition: all 0.3s ease; }
+        .interactive-btn:active { transform: scale(0.95); }
+        .paper-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border-top: 5px solid transparent; }
+        .paper-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px -10px rgba(30, 58, 138, 0.2); border-top: 5px solid #ef4444; }
+        
+        /* Filter Button Active State */
+        .filter-btn.active { background-color: #dc2626 !important; color: white !important; box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.4); border-color: #dc2626 !important; }
+
+        /* Loading Spinner */
+        .spinner { border: 4px solid rgba(255, 255, 255, 0.2); border-radius: 50%; border-top: 4px solid #ef4444; width: 60px; height: 60px; animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        /* Entry Animation & Skeleton */
+        @keyframes popIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        .animate-pop { animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; opacity: 0; }
+        .skeleton { background: #e2e8f0; border-radius: 8px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+    </style>
+</head>
+<body class="text-slate-800 flex flex-col min-h-screen">
+
+    <nav class="bg-white/95 backdrop-blur-md shadow-[0_5px_20px_rgba(0,0,0,0.05)] sticky top-0 z-40 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-4 cursor-pointer group" onclick="window.location.href='index.html'">
+                <div class="w-14 h-14 bg-gradient-to-br from-blue-900 to-blue-700 text-white rounded-xl flex items-center justify-center text-2xl font-black shadow-lg border-2 border-yellow-400 group-hover:rotate-12 transition duration-300">BS</div>
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-black text-blue-950 leading-tight tracking-tight">B. S. Inter College</h1>
+                    <p class="text-[12px] md:text-[14px] text-red-600 font-extrabold tracking-wide font-hindi leading-tight">माध्यमिक शिक्षा परिषद, उ.प्र. द्वारा मान्यता प्राप्त</p>
+                </div>
+            </div>
+            
+            <a href="index.html" class="bg-gradient-to-r from-blue-900 to-blue-800 hover:from-blue-800 hover:to-blue-700 text-white px-6 py-2.5 rounded-lg shadow-md transition-all flex items-center hidden sm:flex font-bold interactive-btn hover:-translate-y-1">
+                <i class="fa-solid fa-house mr-2 text-yellow-400"></i> मुख्य पृष्ठ (Home)
+            </a>
+            <button onclick="window.location.href='index.html'" class="sm:hidden text-2xl text-blue-900 p-2 interactive-btn"><i class="fa-solid fa-house"></i></button>
+        </div>
+    </nav>
+
+    <div class="bg-slate-900 text-white py-16 px-4 text-center relative overflow-hidden shadow-xl z-10 border-b-4 border-red-600">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 pointer-events-none"></div>
+        <div class="absolute top-0 right-1/4 w-96 h-96 bg-red-600 rounded-full blur-[150px] opacity-30 pointer-events-none"></div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <span class="bg-red-600 text-white font-black tracking-widest uppercase text-xs px-5 py-2 rounded-full inline-block mb-5 shadow-[0_0_15px_rgba(220,38,38,0.6)] border border-red-400 animate-pulse">
+                <i class="fa-solid fa-cloud-arrow-down mr-2"></i> Live Sync Enabled
+            </span>
+            <h2 class="text-4xl md:text-6xl font-black mt-2 mb-4 drop-shadow-lg tracking-tight">Examination Portal</h2>
+            <div class="w-24 h-1.5 bg-yellow-500 mx-auto rounded-full mb-6"></div>
+            <p class="text-slate-300 text-lg font-medium">Practice makes perfect. Access official UP Board previous year question papers (PYQ), latest model test papers, and competitive exam practice sets directly from our secure drive.</p>
+        </div>
+    </div>
+
+    <div class="flex-grow max-w-7xl mx-auto w-full px-4 py-12 relative z-20">
+        
+        <div class="bg-white rounded-3xl shadow-lg border border-slate-200 p-6 mb-10">
+            <div class="relative w-full max-w-2xl mx-auto mb-8">
+                <input type="text" id="searchInput" onkeyup="filterPapers()" placeholder="Search by subject, year or class (e.g., Math 2024)..." class="w-full bg-slate-50 border-2 border-slate-200 text-slate-800 text-sm font-bold rounded-full px-6 py-4 focus:outline-none focus:border-red-500 focus:bg-white transition-all shadow-inner">
+                <i class="fa-solid fa-magnifying-glass absolute right-6 top-5 text-red-500 text-lg"></i>
+            </div>
+
+            <div class="overflow-x-auto pb-2 hide-scroll">
+                <div class="flex items-center space-x-3 md:justify-center min-w-max px-2" id="filter-container">
+                    <button onclick="applyFilter('all', this)" class="filter-btn active bg-white border-2 border-slate-200 text-slate-600 font-bold px-6 py-2.5 rounded-xl interactive-btn transition-colors"><i class="fa-solid fa-layer-group mr-2"></i> All Papers</button>
+                    <button onclick="applyFilter('pyq', this)" class="filter-btn bg-white border-2 border-slate-200 text-slate-600 font-bold px-6 py-2.5 rounded-xl interactive-btn transition-colors"><i class="fa-solid fa-clock-rotate-left mr-2"></i> Previous Year (PYQ)</button>
+                    <button onclick="applyFilter('model', this)" class="filter-btn bg-white border-2 border-slate-200 text-slate-600 font-bold px-6 py-2.5 rounded-xl interactive-btn transition-colors"><i class="fa-solid fa-file-pen mr-2"></i> Model Papers</button>
+                    <button onclick="applyFilter('class10', this)" class="filter-btn bg-white border-2 border-slate-200 text-slate-600 font-bold px-6 py-2.5 rounded-xl interactive-btn transition-colors"><i class="fa-solid fa-1 mr-1"></i><i class="fa-solid fa-0 mr-2"></i> Class 10th</button>
+                    <button onclick="applyFilter('class12', this)" class="filter-btn bg-white border-2 border-slate-200 text-slate-600 font-bold px-6 py-2.5 rounded-xl interactive-btn transition-colors"><i class="fa-solid fa-1 mr-1"></i><i class="fa-solid fa-2 mr-2"></i> Class 12th</button>
+                    <button onclick="applyFilter('ssc', this)" class="filter-btn bg-white border-2 border-slate-200 text-slate-600 font-bold px-6 py-2.5 rounded-xl interactive-btn transition-colors"><i class="fa-solid fa-building-columns mr-2"></i> SSC / Govt</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="papers-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 min-h-[400px]">
+            <div class="bg-white rounded-[1.5rem] p-6 border border-slate-200 shadow-lg">
+                <div class="w-14 h-14 skeleton rounded-xl mb-4"></div>
+                <div class="h-6 w-3/4 skeleton mb-3"></div>
+                <div class="h-4 w-1/2 skeleton mb-6"></div>
+                <div class="h-12 w-full skeleton rounded-xl"></div>
+            </div>
+            <div class="bg-white rounded-[1.5rem] p-6 border border-slate-200 shadow-lg">
+                <div class="w-14 h-14 skeleton rounded-xl mb-4"></div>
+                <div class="h-6 w-3/4 skeleton mb-3"></div>
+                <div class="h-4 w-1/2 skeleton mb-6"></div>
+                <div class="h-12 w-full skeleton rounded-xl"></div>
+            </div>
+            <div class="bg-white rounded-[1.5rem] p-6 border border-slate-200 shadow-lg hidden md:block">
+                <div class="w-14 h-14 skeleton rounded-xl mb-4"></div>
+                <div class="h-6 w-3/4 skeleton mb-3"></div>
+                <div class="h-4 w-1/2 skeleton mb-6"></div>
+                <div class="h-12 w-full skeleton rounded-xl"></div>
+            </div>
+            <div class="bg-white rounded-[1.5rem] p-6 border border-slate-200 shadow-lg hidden lg:block">
+                <div class="w-14 h-14 skeleton rounded-xl mb-4"></div>
+                <div class="h-6 w-3/4 skeleton mb-3"></div>
+                <div class="h-4 w-1/2 skeleton mb-6"></div>
+                <div class="h-12 w-full skeleton rounded-xl"></div>
+            </div>
+        </div>
+
+        <div class="mt-12 text-center bg-red-50 p-5 rounded-2xl border border-red-100 shadow-inner">
+            <p class="text-red-900 font-bold text-sm md:text-base"><i class="fa-solid fa-server mr-2 text-red-600"></i> Exam papers and mock tests are synced directly from the Examination Cell's Secure Drive.</p>
+        </div>
+    </div>
+
+    <div id="mediator-overlay" class="hidden fixed inset-0 bg-slate-900/95 z-[999] flex-col items-center justify-center backdrop-blur-xl">
+        <div class="relative w-32 h-32 mb-8">
+            <div class="absolute inset-0 border-4 border-dashed border-red-500/50 rounded-full animate-[spin_4s_linear_infinite]"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <i class="fa-solid fa-file-circle-check text-5xl text-red-500 drop-shadow-[0_0_15px_rgba(239,68,68,0.8)]"></i>
+            </div>
+            <div class="spinner absolute -inset-2 w-[144px] h-[144px]"></div>
+        </div>
+        
+        <h2 class="text-4xl font-black text-white mb-3 tracking-wide">Preparing Exam Paper...</h2>
+        <p class="text-slate-300 font-bold text-lg mb-8 flex items-center bg-slate-800/50 px-5 py-2.5 rounded-full border border-slate-700">
+            <i class="fa-solid fa-file-pdf text-red-500 mr-2 text-xl"></i> <span id="mediator-filename" class="text-yellow-400 ml-2">Document.pdf</span>
+        </p>
+        
+        <div class="w-80 h-2 bg-slate-800 rounded-full overflow-hidden shadow-inner">
+            <div class="h-full bg-gradient-to-r from-red-600 via-yellow-500 to-red-500 w-full rounded-full" style="animation: loadBar 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;"></div>
+        </div>
+        <p class="text-red-400 text-xs font-bold uppercase tracking-widest mt-4 animate-pulse">Launching Secure Viewer...</p>
+        
+        <style> @keyframes loadBar { 0% { transform: translateX(-100%); } 100% { transform: translateX(0); } } </style>
+    </div>
+
+    <footer class="bg-blue-950 text-slate-400 py-6 text-center mt-auto border-t-4 border-yellow-500">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm font-semibold">
+            <p>&copy; 2026 B. S. Inter College. All Rights Reserved.</p>
+            <p class="mt-2 md:mt-0 text-slate-300">Exam Cell: adityaproject0007@gmail.com</p>
+        </div>
+    </footer>
+
+    <script>
+        // ========================================================
+        // LIVE GOOGLE APPS SCRIPT URL
+        // ========================================================
+        const API_URL = "https://script.google.com/macros/s/AKfycbxWKeXqYOgroZeiaOkwChtWrPPia7761UR1eBNgthuuAViItXHuYYFyf1jlPC3qu7rQFA/exec"; // Put your new App Script URL here!
+        
+        let allPapers = [];
+        let currentFilter = 'all';
+
+        // Title Case formatting
+        function toTitleCase(str) {
+            return str.replace(/\w\S*/g, function(txt){
+                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+            });
+        }
+
+        // Fetch Live Data from Drive
+        async function fetchLivePapers() {
+            const grid = document.getElementById('papers-grid');
+            
+            if(API_URL === "https://script.google.com/macros/s/AKfycbxWKeXqYOgroZeiaOkwChtWrPPia7761UR1eBNgthuuAViItXHuYYFyf1jlPC3qu7rQFA/exec") {
+                grid.innerHTML = `
+                    <div class="col-span-full bg-red-50 text-red-600 p-8 rounded-2xl border border-red-200 text-center font-bold">
+                        <i class="fa-solid fa-triangle-exclamation text-4xl mb-4"></i><br>
+                        Admin Action Required: Please insert the Google Apps Script Web App URL in the code to sync Exam Papers.
+                    </div>`;
+                return;
+            }
+
+            try {
+                const response = await fetch(API_URL);
+                const rawFiles = await response.json();
+                
+                // Parse File Names to extract Data
+                // Example File Name: class10_pyq_hindi_2024
+                allPapers = rawFiles.map((file, index) => {
+                    const rawName = file.name.toLowerCase();
+                    
+                    // Determine Class
+                    let fileClass = "ssc"; // Default
+                    if(rawName.includes("class10") || rawName.includes("class 10")) fileClass = "class10";
+                    if(rawName.includes("class12") || rawName.includes("class 12")) fileClass = "class12";
+                    
+                    // Determine Type (PYQ vs Model)
+                    let fileType = "model"; // Default
+                    if(rawName.includes("pyq") || rawName.includes("previous")) fileType = "pyq";
+                    
+                    // Extract Year (Looks for 4 digit number like 2024, 2025)
+                    let yearMatch = rawName.match(/\b(20\d{2})\b/);
+                    let year = yearMatch ? yearMatch[1] : "2025-26";
+                    
+                    // Clean the display name (Remove underscores and year/class codes if possible)
+                    let cleanTitle = file.name.replace(/_/g, ' ');
+
+                    // Set default marks based on class
+                    let marks = fileClass === 'class12' ? "100" : "70";
+                    if(fileClass === 'ssc') marks = "100+";
+
+                    return {
+                        id: index,
+                        title: toTitleCase(cleanTitle),
+                        subject: toTitleCase(cleanTitle),
+                        class: fileClass,
+                        type: fileType,
+                        year: year,
+                        url: file.url,
+                        marks: marks,
+                        time: fileClass === 'ssc' ? "Practice" : "3 Hrs 15 Mins"
+                    };
+                });
+
+                renderPapers(allPapers);
+            } catch (error) {
+                grid.innerHTML = `
+                    <div class="col-span-full bg-red-50 text-red-600 p-8 rounded-2xl border border-red-200 text-center font-bold">
+                        <i class="fa-solid fa-triangle-exclamation text-4xl mb-4"></i><br>
+                        Failed to load exam papers from the server.
+                    </div>`;
+            }
+        }
+
+        // Render Grid
+        function renderPapers(papers) {
+            const grid = document.getElementById('papers-grid');
+            grid.innerHTML = ''; 
+
+            if(papers.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center p-16 text-slate-400 font-bold text-xl">
+                        <i class="fa-solid fa-file-circle-xmark text-6xl mb-4"></i><br>
+                        No exam papers found for this filter.
+                    </div>`;
+                return;
+            }
+
+            papers.forEach((paper, index) => {
+                const delay = index * 0.05; 
+                
+                // Color Logic based on Type
+                let badgeColor = paper.type === 'pyq' ? 'bg-red-100 text-red-600 border-red-200' : 'bg-green-100 text-green-700 border-green-200';
+                let typeName = paper.type === 'pyq' ? 'Previous Year (PYQ)' : 'Model Paper';
+                let iconColor = paper.type === 'pyq' ? 'text-red-500' : 'text-green-500';
+
+                const card = document.createElement('div');
+                card.className = `paper-card bg-white rounded-[1.5rem] shadow-lg border border-slate-200 p-6 flex flex-col justify-between animate-pop cursor-pointer relative overflow-hidden`;
+                card.style.animationDelay = `${delay}s`;
+                card.onclick = () => openMediator(paper.url, paper.title);
+                
+                card.innerHTML = `
+                    <div class="absolute top-0 right-0 bg-slate-100 text-slate-500 font-black text-[10px] px-3 py-1 rounded-bl-xl border-b border-l border-slate-200 tracking-widest uppercase">
+                        ${paper.year}
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-start mb-4 mt-2">
+                            <div class="w-14 h-14 bg-slate-50 rounded-xl flex items-center justify-center text-3xl shadow-inner border border-slate-100 ${iconColor}">
+                                <i class="fa-solid fa-file-lines"></i>
+                            </div>
+                        </div>
+                        <span class="text-[10px] font-black px-2.5 py-1 rounded-md uppercase tracking-wider border mb-3 inline-block ${badgeColor}">
+                            ${typeName}
+                        </span>
+                        <h3 class="font-black text-lg text-blue-950 mb-3 leading-tight line-clamp-2">${paper.title}</h3>
+                        
+                        <div class="flex items-center justify-between text-xs font-bold text-slate-500 mb-6 bg-slate-50 p-2 rounded-lg border border-slate-100">
+                            <span><i class="fa-solid fa-stopwatch mr-1 text-yellow-500"></i> ${paper.time}</span>
+                            <span><i class="fa-solid fa-check-double mr-1 text-green-500"></i> ${paper.marks} Marks</span>
+                        </div>
+                    </div>
+                    <button class="w-full bg-slate-900 hover:bg-red-600 text-white font-black py-3 px-4 rounded-xl transition-colors shadow-md flex items-center justify-center interactive-btn">
+                        <i class="fa-solid fa-download mr-2"></i> Download / View
+                    </button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Filter Logic
+        function applyFilter(filterType, btnElement) {
+            currentFilter = filterType;
+            
+            // Update Active Buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            // Filter Data
+            let filteredData = [];
+            if(filterType === 'all') {
+                filteredData = allPapers;
+            } else if (filterType === 'pyq' || filterType === 'model') {
+                filteredData = allPapers.filter(p => p.type === filterType);
+            } else {
+                filteredData = allPapers.filter(p => p.class === filterType);
+            }
+            
+            renderPapers(filteredData);
+        }
+
+        // Search Logic
+        function filterPapers() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = allPapers.filter(paper => 
+                paper.title.toLowerCase().includes(query) || 
+                paper.year.toLowerCase().includes(query)
+            );
+            
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.filter-btn:first-child').classList.add('active');
+            
+            renderPapers(filtered);
+        }
+
+        // Mediator Logic (Secure Viewer)
+        function openMediator(fileUrl, fileName) {
+            const mediator = document.getElementById('mediator-overlay');
+            document.getElementById('mediator-filename').innerText = fileName + ".pdf";
+            
+            mediator.classList.remove('hidden');
+            mediator.classList.add('flex');
+
+            setTimeout(() => {
+                mediator.classList.remove('flex');
+                mediator.classList.add('hidden');
+                window.open(fileUrl, '_blank'); 
+            }, 1500);
+        }
+
+        // Initialize On Load
+        window.onload = fetchLivePapers;
+    </script>
+</body>
+</html>
