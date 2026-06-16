@@ -3,112 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Learning & Study Materials | B. S. Inter College</title>
+    <title>Study Library | B. S. Inter College</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style> body { font-family: 'Poppins', sans-serif; } </style>
+    
+    <style>
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; background-color: #f1f5f9; overflow-x: hidden; }
+        .font-hindi { font-family: 'Mukta', sans-serif; } 
+        
+        .interactive-btn { transition: all 0.3s ease; }
+        .interactive-btn:active { transform: scale(0.95); }
+        .book-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border-bottom: 5px solid transparent; }
+        .book-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px -10px rgba(30, 58, 138, 0.2); border-bottom: 5px solid #eab308; }
+        
+        /* Filter Button Active State */
+        .filter-btn.active { background-color: #1e3a8a !important; color: white !important; box-shadow: 0 10px 15px -3px rgba(30, 58, 138, 0.4); border-color: #1e3a8a !important; }
+
+        /* Loading Spinner */
+        .spinner { border: 4px solid rgba(255, 255, 255, 0.2); border-radius: 50%; border-top: 4px solid #fbbf24; width: 60px; height: 60px; animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Skeleton Animation */
+        .skeleton { background: #e2e8f0; border-radius: 8px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+        
+        /* Entry Animation */
+        @keyframes popIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        .animate-pop { animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; opacity: 0; }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body class="text-slate-800 flex flex-col min-h-screen">
 
     <!-- Navbar -->
-    <nav class="bg-blue-950 text-white shadow-md">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 bg-yellow-500 text-blue-900 rounded-full flex items-center justify-center font-bold">BS</div>
-                <h1 class="text-xl font-bold">B. S. Inter College</h1>
+    <nav class="bg-white/95 backdrop-blur-md shadow-[0_5px_20px_rgba(0,0,0,0.05)] sticky top-0 z-40 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-4 cursor-pointer group" onclick="window.location.href='index.html'">
+                <div class="w-14 h-14 bg-gradient-to-br from-blue-900 to-blue-700 text-white rounded-xl flex items-center justify-center text-2xl font-black shadow-lg border-2 border-yellow-400 group-hover:rotate-12 transition duration-300">BS</div>
+                <div>
+                    <h1 class="text-2xl md:text-3xl font-black text-blue-950 leading-tight tracking-tight">B. S. Inter College</h1>
+                    <p class="text-[12px] md:text-[14px] text-red-600 font-extrabold tracking-wide font-hindi leading-tight">माध्यमिक शिक्षा परिषद, उ.प्र. द्वारा मान्यता प्राप्त</p>
+                </div>
             </div>
-            <a href="index.html" class="text-yellow-400 hover:text-white font-medium transition"><i class="fa-solid fa-arrow-left mr-2"></i> Home</a>
+            
+            <a href="index.html" class="bg-gradient-to-r from-blue-900 to-blue-800 hover:from-blue-800 hover:to-blue-700 text-white px-6 py-2.5 rounded-lg shadow-md transition-all flex items-center hidden sm:flex font-bold interactive-btn hover:-translate-y-1">
+                <i class="fa-solid fa-house mr-2 text-yellow-400"></i> मुख्य पृष्ठ (Home)
+            </a>
+            <button onclick="window.location.href='index.html'" class="sm:hidden text-2xl text-blue-900 p-2 interactive-btn"><i class="fa-solid fa-house"></i></button>
         </div>
     </nav>
 
-    <!-- Header Area -->
-    <div class="bg-blue-900 text-white py-12 px-4 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Digital Study Library</h2>
-        <p class="text-blue-200 max-w-2xl mx-auto">Download official class notes, board exam preparation materials, and special competitive exam guides prepared by our expert faculty.</p>
-    </div>
-
-    <!-- Main Content Area -->
-    <div class="max-w-7xl mx-auto px-4 py-10">
+    <!-- Page Header Banner -->
+    <div class="bg-blue-950 text-white py-16 px-4 text-center relative overflow-hidden shadow-xl z-10">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 pointer-events-none"></div>
+        <div class="absolute top-0 right-1/4 w-96 h-96 bg-purple-500 rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
         
-        <!-- Filter/Tabs (Visual Only for UI) -->
-        <div class="flex flex-wrap justify-center gap-3 mb-10">
-            <button class="bg-yellow-500 text-blue-950 px-6 py-2 rounded-full font-bold shadow-md">All Classes</button>
-            <button class="bg-white text-slate-600 border border-slate-300 hover:bg-slate-100 px-6 py-2 rounded-full font-semibold transition">Class 10th (Boards)</button>
-            <button class="bg-white text-slate-600 border border-slate-300 hover:bg-slate-100 px-6 py-2 rounded-full font-semibold transition">Class 12th</button>
-            <button class="bg-white text-slate-600 border border-slate-300 hover:bg-slate-100 px-6 py-2 rounded-full font-semibold transition">SSC / Govt. Prep</button>
-        </div>
-
-        <!-- Material Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-            <!-- Card 1: Chemistry Notes (Customized) -->
-            <div class="bg-white rounded-xl shadow-md border border-slate-100 p-6 flex flex-col hover:-translate-y-1 transition duration-300">
-                <div class="flex items-start justify-between mb-4">
-                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center text-2xl">
-                        <i class="fa-solid fa-flask-vial"></i>
-                    </div>
-                    <span class="bg-red-100 text-red-600 text-xs font-bold px-2 py-1 rounded">HOT</span>
-                </div>
-                <h3 class="font-bold text-xl text-blue-900 mb-1">Class 12th Chemistry Notes</h3>
-                <p class="text-sm text-slate-500 mb-4">Complete syllabus notes & important reactions for Board Exams.</p>
-                <div class="mt-auto border-t border-slate-100 pt-4 flex items-center justify-between">
-                    <div class="text-xs font-medium text-slate-600">
-                        <i class="fa-solid fa-user-pen mr-1 text-yellow-500"></i> By Chandrashekhar Yadav
-                    </div>
-                    <button class="text-blue-600 hover:text-blue-800 font-bold text-sm"><i class="fa-solid fa-download mr-1"></i> PDF</button>
-                </div>
-            </div>
-
-            <!-- Card 2: Maths SSC Prep -->
-            <div class="bg-white rounded-xl shadow-md border border-slate-100 p-6 flex flex-col hover:-translate-y-1 transition duration-300">
-                <div class="flex items-start justify-between mb-4">
-                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-2xl">
-                        <i class="fa-solid fa-calculator"></i>
-                    </div>
-                    <span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded">SSC PREP</span>
-                </div>
-                <h3 class="font-bold text-xl text-blue-900 mb-1">Maths & Reasoning Tracker</h3>
-                <p class="text-sm text-slate-500 mb-4">Special study tracker and shortcuts for Govt. Job / SSC Exams preparation.</p>
-                <div class="mt-auto border-t border-slate-100 pt-4 flex items-center justify-between">
-                    <div class="text-xs font-medium text-slate-600">
-                        <i class="fa-solid fa-file-pdf mr-1 text-red-500"></i> 12 MB
-                    </div>
-                    <button class="text-blue-600 hover:text-blue-800 font-bold text-sm"><i class="fa-solid fa-download mr-1"></i> PDF</button>
-                </div>
-            </div>
-
-            <!-- Card 3: Social Science History -->
-            <div class="bg-white rounded-xl shadow-md border border-slate-100 p-6 flex flex-col hover:-translate-y-1 transition duration-300">
-                <div class="flex items-start justify-between mb-4">
-                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center text-2xl">
-                        <i class="fa-solid fa-earth-americas"></i>
-                    </div>
-                    <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2 py-1 rounded">CLASS 9</span>
-                </div>
-                <h3 class="font-bold text-xl text-blue-900 mb-1">History & Revolutions</h3>
-                <p class="text-sm text-slate-500 mb-4">Infographics on French Revolution, Historical Slogans & Agricultural changes.</p>
-                <div class="mt-auto border-t border-slate-100 pt-4 flex items-center justify-between">
-                    <div class="text-xs font-medium text-slate-600">
-                        <i class="fa-solid fa-user-pen mr-1 text-yellow-500"></i> Humanities Dept.
-                    </div>
-                    <button class="text-blue-600 hover:text-blue-800 font-bold text-sm"><i class="fa-solid fa-download mr-1"></i> PDF</button>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- APAAR Notice Area -->
-        <div class="mt-12 bg-white rounded-xl shadow-sm border-l-4 border-yellow-500 p-6 flex flex-col md:flex-row items-center justify-between">
-            <div>
-                <h4 class="font-bold text-blue-900 text-lg flex items-center"><i class="fa-solid fa-id-card-clip mr-2 text-yellow-500"></i> APAAR ID Registration</h4>
-                <p class="text-slate-600 text-sm mt-1">Students must ensure their APAAR ID is generated and linked with the school portal before downloading board admit cards.</p>
-            </div>
-            <a href="#" class="mt-4 md:mt-0 bg-blue-900 hover:bg-blue-800 text-white font-medium px-5 py-2 rounded-md transition whitespace-nowrap">
-                Submit APAAR Detail
-            </a>
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <span class="bg-purple-600 text-white font-black tracking-widest uppercase text-xs px-5 py-2 rounded-full inline-block mb-5 shadow-[0_0_15px_rgba(147,51,234,0.6)] border border-purple-400 animate-pulse">
+                <i class="fa-solid fa-laptop-file mr-2"></i> 24/7 Digital Access
+            </span>
+            <h2 class="text-4xl md:text-6xl font-black mt-2 mb-4 drop-shadow-lg tracking-tight">Digital E-Library</h2>
+            <div class="w-24 h-1.5 bg-yellow-500 mx-auto rounded-full mb-6"></div>
+            <p class="text-blue-200 text-lg font-medium">Download official UP Board class notes, PDFs, and study materials prepared by our expert faculty. Select your class below to filter materials.</p>
         </div>
     </div>
 
+    <!-- Main Content -->
+    <div class="flex-grow max-w-7xl mx-auto w-full px-4 py-12 relative z-20">
+        
+        <!-- Filters (Scrollable on Mobile) -->
+        <div class="mb-10 overflow-x-auto pb-4 hide-scroll">
+            <div class="flex items-center space-x-3 md:justify-center min-w-max px-2" id="filter-container">
+                <button onclick="applyFilter('all', this)" class="filter-btn active bg-white border-2 border-slate-200 text-slate-600 font-bold px-6 py-2.5 rounded-xl interactive-btn transition-colors">All Materials</button>
+                <button onclick="applyFilter('class6', this)" class="filter-btn bg-white border-2 border-slate-200 text-slate-600 font-bold px-6 py-2.5 rounded-xl interactive-btn transition-colors">Class 6</button>
+                <button onclick="applyFilter('class7', this)" class="filter-btn bg-white border-2 border-slate-200 text-slate-600 font-bold px-6 py-2.5 rounded-xl interactive-btn transition-colors">Class 7</button>
+                <button onclick="applyFilter('class8', this)" class="filter-btn bg-white border-2 border-slate-200 text-slate-600 font-bold px-6 py-2.5 rounded-xl interactive-btn transition-colors">Class 8</button>
+                <button onclick="applyFilter('class9', this)" class="filter-btn bg-white border-2 border-slate-200 text-slate-600 font-bold px-6 py-2.5 rounded-xl interactive-btn transition-colors">Class 9</button>
+                <button onclick="applyFilter('class10', this)" class="filter-btn bg-white border-2 border-slate-200 text-slate-600 font-bold px-6 py-2.5 rounded-xl interactive-btn transition-colors">Class 10</button>
+                <button onclick="applyFilter('class11', this)" class="filter-btn bg-white border-2 border-slate-200 text-slate-600 font-bold px-6 py-2.5 rounded-xl interactive-btn transition-colors">Class 11</button>
+                <button onclick="applyFilter('class12', this)" class="filter-btn bg-white border-2 border-slate-200 text-slate-600 font-bold px-6 py-2.5 rounded-xl interactive-btn transition-colors">Class 12</button>
+                <button onclick="applyFilter('other', this)" class="filter-btn bg-white border-2 border-slate-200 text-slate-600 font-bold px-6 py-2.5 rounded-xl interactive-btn transition-colors">Others / SSC</button>
+            </div>
+        </div>
+
+        <!-- LIVE PDF CARDS GRID -->
+        <div id="pdf-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 min-h-[400px]">
+            <!-- Skeletons showing while data loads -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div class="w-14 h-14 skeleton rounded-xl mb-4"></div>
+                <div class="h-6 w-3/4 skeleton mb-3"></div>
+                <div class="h-4 w-1/2 skeleton mb-6"></div>
+                <div class="h-10 w-full skeleton"></div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div class="w-14 h-14 skeleton rounded-xl mb-4"></div>
+                <div class="h-6 w-3/4 skeleton mb-3"></div>
+                <div class="h-4 w-1/2 skeleton mb-6"></div>
+                <div class="h-10 w-full skeleton"></div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hidden md:block">
+                <div class="w-14 h-14 skeleton rounded-xl mb-4"></div>
+                <div class="h-6 w-3/4 skeleton mb-3"></div>
+                <div class="h-4 w-1/2 skeleton mb-6"></div>
+                <div class="h-10 w-full skeleton"></div>
+            </div>
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hidden lg:block">
+                <div class="w-14 h-14 skeleton rounded-xl mb-4"></div>
+                <div class="h-6 w-3/4 skeleton mb-3"></div>
+                <div class="h-4 w-1/2 skeleton mb-6"></div>
+                <div class="h-10 w-full skeleton"></div>
+            </div>
+        </div>
+
+        <div class="mt-12 text-center bg-purple-50 p-5 rounded-2xl border border-purple-100 shadow-inner">
+            <p class="text-purple-900 font-bold text-sm md:text-base"><i class="fa-solid fa-server mr-2 text-purple-600"></i> The study materials are synchronized securely via B.S. Inter College's Official Drive.</p>
+        </div>
+    </div>
+
+    <!-- ================= THE MEDIATOR OVERLAY (Secure PDF Viewer) ================= -->
+    <div id="mediator-overlay" class="hidden fixed inset-0 bg-blue-950/95 z-[999] flex-col items-center justify-center backdrop-blur-xl">
+        <div class="relative w-32 h-32 mb-8">
+            <div class="absolute inset-0 border-4 border-dashed border-purple-500/50 rounded-full animate-[spin_4s_linear_infinite]"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <i class="fa-solid fa-book-open-reader text-5xl text-purple-400 drop-shadow-[0_0_15px_rgba(168,85,247,0.8)]"></i>
+            </div>
+            <div class="spinner absolute -inset-2 w-[144px] h-[144px]"></div>
+        </div>
+        
+        <h2 class="text-4xl font-black text-white mb-3 tracking-wide">Opening Secure PDF...</h2>
+        <p class="text-blue-200 font-bold text-lg mb-8 flex items-center bg-blue-900/50 px-5 py-2.5 rounded-full border border-blue-800">
+            <i class="fa-solid fa-file-pdf text-red-400 mr-2 text-xl"></i> <span id="mediator-filename" class="text-yellow-400 ml-2">Document.pdf</span>
+        </p>
+        
+        <div class="w-80 h-2 bg-blue-900 rounded-full overflow-hidden shadow-inner">
+            <div class="h-full bg-gradient-to-r from-purple-500 via-yellow-400 to-blue-500 w-full rounded-full" style="animation: loadBar 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;"></div>
+        </div>
+        <p class="text-blue-400 text-xs font-bold uppercase tracking-widest mt-4 animate-pulse">Launching Document Viewer...</p>
+        
+        <style> @keyframes loadBar { 0% { transform: translateX(-100%); } 100% { transform: translateX(0); } } </style>
+    </div>
+
+    <!-- Minimal Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-6 text-center mt-auto border-t-4 border-yellow-500">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm font-semibold">
+            <p>&copy; 2026 B. S. Inter College. All Rights Reserved.</p>
+            <p class="mt-2 md:mt-0 text-slate-300">IT Cell: adityaproject0007@gmail.com</p>
+        </div>
+    </footer>
+
+    <!-- Scripts for Live Google Drive API & Parsing Logic -->
+    <script>
+        // ========================================================
+        // LIVE GOOGLE APPS SCRIPT URL
+        // ========================================================
+        const API_URL = "https://script.google.com/macros/s/AKfycbzJc2xLtruXLAB9XrINRcvkdrWzApbe9ZIlg-Z0I26SN95bQyFVSU1xXDLQoUanrzB10A/exec"; // Put your Study Material Script URL here
+        
+        let allMaterials = [];
+        let currentFilter = 'all';
+
+        // 1. Title Case Converter (e.g., "hindi notes" -> "Hindi Notes")
+        function toTitleCase(str) {
+            return str.replace(/\w\S*/g, function(txt){
+                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+            });
+        }
+
+        // 2. Fetch Live Data
+        async function fetchLiveMaterials() {
+            const grid = document.getElementById('pdf-grid');
+            
+            if(API_URL === "https://script.google.com/macros/s/AKfycbzJc2xLtruXLAB9XrINRcvkdrWzApbe9ZIlg-Z0I26SN95bQyFVSU1xXDLQoUanrzB10A/exec") {
+                grid.innerHTML = `
+                    <div class="col-span-full bg-red-50 text-red-600 p-8 rounded-2xl border border-red-200 text-center font-bold">
+                        <i class="fa-solid fa-triangle-exclamation text-4xl mb-4"></i><br>
+                        Admin Action Required: Please insert the Google Apps Script Web App URL in the code to sync Study Materials.
+                    </div>`;
+                return;
+            }
+
+            try {
+                const response = await fetch(API_URL);
+                const rawFiles = await response.json();
+                
+                // 3. Process and Parse Filenames
+                allMaterials = rawFiles.map(file => {
+                    const rawName = file.name; // e.g., "class6_hindi_notes"
+                    let fileClass = "other";
+                    let subjectName = rawName;
+                    
+                    // Naming Convention Logic (splits by first underscore)
+                    if(rawName.includes('_')) {
+                        const parts = rawName.split('_');
+                        const prefix = parts[0].toLowerCase().trim(); // "class6"
+                        
+                        // Check if the prefix starts with "class"
+                        if(prefix.startsWith('class')) {
+                            fileClass = prefix; // e.g., "class6"
+                            // Join the rest of the name and replace underscores with spaces
+                            subjectName = parts.slice(1).join(' ').replace(/_/g, ' '); 
+                        }
+                    }
+
+                    return {
+                        ...file,
+                        mappedClass: fileClass,
+                        displayName: toTitleCase(subjectName),
+                        classNameDisplay: fileClass !== "other" ? fileClass.replace('class', 'Class ') : "General / SSC"
+                    };
+                });
+
+                renderMaterials(allMaterials);
+            } catch (error) {
+                grid.innerHTML = `
+                    <div class="col-span-full bg-red-50 text-red-600 p-8 rounded-2xl border border-red-200 text-center font-bold">
+                        <i class="fa-solid fa-triangle-exclamation text-4xl mb-4"></i><br>
+                        Failed to load study materials from server.
+                    </div>`;
+            }
+        }
+
+        // 4. Render Grid
+        function renderMaterials(materials) {
+            const grid = document.getElementById('pdf-grid');
+            grid.innerHTML = ''; 
+
+            if(materials.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center p-16 text-slate-400 font-bold text-xl">
+                        <i class="fa-solid fa-folder-open text-6xl mb-4"></i><br>
+                        No materials found for this section.
+                    </div>`;
+                return;
+            }
+
+            materials.forEach((material, index) => {
+                const delay = index * 0.05; // Staggered animation
+                
+                // Color Logic based on Class (Just to make the UI look colorful and premium)
+                const colors = ['text-blue-600 bg-blue-100', 'text-green-600 bg-green-100', 'text-purple-600 bg-purple-100', 'text-orange-600 bg-orange-100', 'text-pink-600 bg-pink-100'];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+                const card = document.createElement('div');
+                card.className = `book-card bg-white rounded-[1.5rem] shadow-md border border-slate-200 p-6 flex flex-col justify-between animate-pop cursor-pointer`;
+                card.style.animationDelay = `${delay}s`;
+                card.onclick = () => openMediator(material.url, material.displayName);
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="w-14 h-14 ${randomColor} rounded-xl flex items-center justify-center text-2xl shadow-inner">
+                                <i class="fa-solid fa-book-open"></i>
+                            </div>
+                            <span class="bg-slate-100 text-slate-600 text-[10px] font-black px-2.5 py-1 rounded-md uppercase tracking-wider border border-slate-200">
+                                ${material.classNameDisplay}
+                            </span>
+                        </div>
+                        <h3 class="font-black text-xl text-blue-950 mb-2 leading-tight line-clamp-2">${material.displayName}</h3>
+                        <p class="text-xs text-slate-500 font-bold mb-6"><i class="fa-solid fa-file-pdf mr-1 text-red-500"></i> Official Document</p>
+                    </div>
+                    <button class="w-full bg-slate-50 hover:bg-blue-900 text-blue-700 hover:text-white font-black py-3 px-4 rounded-xl transition-colors shadow-sm flex items-center justify-center border border-slate-200 hover:border-blue-900 interactive-btn">
+                        <i class="fa-solid fa-eye mr-2"></i> Read / Download
+                    </button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // 5. Filter Logic
+        function applyFilter(className, btnElement) {
+            currentFilter = className;
+            
+            // Update Active Buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            // Filter Data
+            let filteredData = [];
+            if(className === 'all') {
+                filteredData = allMaterials;
+            } else {
+                filteredData = allMaterials.filter(m => m.mappedClass === className);
+            }
+            
+            renderMaterials(filteredData);
+        }
+
+        // 6. Mediator Logic (Secure Viewer)
+        function openMediator(fileUrl, fileName) {
+            const mediator = document.getElementById('mediator-overlay');
+            document.getElementById('mediator-filename').innerText = fileName + ".pdf";
+            
+            mediator.classList.remove('hidden');
+            mediator.classList.add('flex');
+
+            setTimeout(() => {
+                mediator.classList.remove('flex');
+                mediator.classList.add('hidden');
+                window.open(fileUrl, '_blank');
+            }, 1500);
+        }
+
+        // Initialize On Load
+        window.onload = fetchLiveMaterials;
+    </script>
 </body>
 </html>
